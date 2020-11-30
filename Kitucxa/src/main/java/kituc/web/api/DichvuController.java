@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kituc.data.DichvuRepository;
 import kituc.entity.Dichvu;
-//test commit
+
 @RestController
 @RequestMapping(path = "/dichvu", produces = "application/json")
 @CrossOrigin(origins = "*")
