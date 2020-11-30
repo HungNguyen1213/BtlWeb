@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kituc.data.PhongRepository;
 import kituc.entity.Phong;
-
+//test commit
 @RestController
 @RequestMapping(path = "/phong", produces = "application/json")
 @CrossOrigin(origins = "*")
