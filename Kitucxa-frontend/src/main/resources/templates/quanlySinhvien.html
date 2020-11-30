@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Quan ly Sinh vien</title>
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+<body>
+	<div align="center">
+		<h1>Quan ly Sinh vien</h1>
+		<h2>
+			<a th:href="@{/quan-ly-sinh-vien/them}" class="btn btn-warning">Them
+				Sinh vien</a>
+		</h2>
+		<hr>
+	</div>
+	<div align="center">
+		<h2>Danh sach Sinh vien</h2>
+		<br>
+		<form method="get" th:action="@{/quan-ly-sinh-vien/tim}">
+			<input type="text" placeholder="Tim kiem..." name="keyword">
+			<input type="submit" class="btn btn-success" value="Tim kiem" />
+		</form>
+		<br>
+		<table border="1" cellpadding="5">
+			<tr class="text-center">
+				<th>MaSv</th>
+				<th>Ten</th>
+				<th>Lop</th>
+				<th>SoCMT</th>
+				<th>Ngay sinh</th>
+				<th>Que quan</th>
+				<th>Sua/Xoa</th>
+			</tr>
+			<tr th:each="sv : ${listSv}">
+				<td th:utext="${sv.maSv}"></td>
+				<td th:utext="${sv.ten}"></td>
+				<td th:utext="${sv.lop}"></td>
+				<td th:utext="${sv.soCMT}"></td>
+				<td th:utext="${sv.ngaySinh}"></td>
+				<td th:utext="${sv.queQuan}"></td>
+				<td><a th:href="@{'/quan-ly-sinh-vien/sua/' + ${sv.ma}}"
+					class="btn btn-success">Sua</a> &nbsp;&nbsp;&nbsp;&nbsp; <a
+					th:href="@{'/quan-ly-sinh-vien/xoa/' + ${sv.ma}}"
+					class="btn btn-danger">Xoa</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
