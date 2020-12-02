@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import kituc.model.Dichvu;
@@ -29,7 +30,7 @@ public class QuanlyDichvu {
 	@GetMapping("/them")
 	private String showThemDichvuForm(Model model) {
 		model.addAttribute("dv", new Dichvu());
-		return "themDichvu";
+		return "dichvuForm";
 	}
 	
 	@PostMapping("/them")
@@ -42,7 +43,7 @@ public class QuanlyDichvu {
 	private String showSuaDichvuForm(Model model, @PathVariable("maDv") String maDv) {
 		Dichvu dv = rest.getForObject("http://localhost:8080/dichvu/{maDv}", Dichvu.class, maDv);
 		model.addAttribute("dv", dv);
-		return "suaDichvu";
+		return "dichvuForm";
 	}
 	
 	@PostMapping("/sua/{maDv}")
@@ -57,4 +58,10 @@ public class QuanlyDichvu {
 		return "redirect:/quan-ly-dich-vu";
 	}
 	
+	@GetMapping("/tim")
+	private String timDichvu(Model model, @RequestParam("keyword") String keyword) {
+		List<Dichvu> listDv = Arrays.asList(rest.getForObject("http://localhost:8080/dichvu/tim/{keyword}", Dichvu[].class, keyword));
+		model.addAttribute("listDv", listDv);
+		return "quanlyDichvu";
+	}
 }

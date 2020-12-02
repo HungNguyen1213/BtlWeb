@@ -16,6 +16,12 @@
 	</div>
 	<div align="center">
 		<h2>Danh sach Dich vu</h2>
+		<br>
+		<form th:action="@{/quan-ly-dich-vu/tim}" method="get" >
+			<input type="text" name="keyword" placeholder="Tim kiem..." />
+			<input type="submit" value="Tim kiem" class="btn btn-success" />
+		</form>
+		<br>
 		<table border="1" cellpadding="5">
 			<tr class="text-center">
 				<th>Ma dich vu</th>

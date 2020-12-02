@@ -30,7 +30,7 @@ public class QuanlySinhvienController {
 	@GetMapping("/them")
 	private String showThemSinhvienForm(Model model) {
 		model.addAttribute("sv", new Sinhvien());
-		return "themSinhvien";
+		return "sinhvienForm";
 	}
 	
 	@PostMapping("/them")
@@ -44,7 +44,7 @@ public class QuanlySinhvienController {
 	private String showSuaSinhvienForm(Model model, @PathVariable("ma") int ma) {
 		Sinhvien sv =rest.getForObject("http://localhost:8080/sinhvien/{ma}", Sinhvien.class, ma);
 		model.addAttribute("sv", sv);
-		return "suaSinhvien";
+		return "sinhvienForm";
 	}
 	
 	@PostMapping("/sua/{ma}")

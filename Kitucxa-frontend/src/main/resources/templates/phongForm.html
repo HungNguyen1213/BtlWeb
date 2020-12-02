@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns:th="http://www.thymeleft.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Quan ly Phong</title>
 <link rel="stylesheet"
@@ -8,13 +8,36 @@
 <body>
 	<div align="center">
 		<h1>Quan ly Phong</h1>
-		<h2>
-			<a th:href="@{/quan-ly-phong}" class="btn btn-warning">Danh sach
-				Phong</a>
-		</h2>
+		<h2><a th:href="@{/quan-ly-phong}" class="btn btn-warning">Danh sach Phong</a></h2>
 		<hr>
 	</div>
-	<div align="center">
+	<div align="center" th:unless="${phong.soPhong}">
+		<h2>Them Phong</h2>
+		<br>
+		<form method="post" th:object="${phong}">
+			<table>
+				<tr class="text-left">
+					<td>So phong</td>
+					<td><input type="text" th:field="*{soPhong}" /></td>
+				</tr>
+				<tr class="text-left">
+					<td>Loai phong</td>
+					<td><input type="text" th:field="*{loaiPhong}" /></td>
+				</tr>
+				<tr class="text-left">
+					<td>Don gia</td>
+					<td><input type="text" th:field="*{donGia}" /></td>
+				</tr>
+				<tr class="text-left">
+					<td>So nguoi o toi da</td>
+					<td><input type="text" th:field="*{soNguoitoida}" /></td>
+				</tr>
+			</table>
+			<br>
+			<input type="submit" value="Them" class="btn btn-success" />
+		</form>
+	</div>
+	<div align="center" th:if="${phong.soPhong}">
 		<h2>Sua Phong</h2>
 		<form method="POST" th:object="${phong}">
 			<table>

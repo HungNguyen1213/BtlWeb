@@ -9,6 +9,6 @@ import kituc.entity.Sinhvien;
 
 public interface SinhvienRepositoty extends CrudRepository<Sinhvien, Integer> {
 	
-	@Query("SELECT sv FROM Sinhvien sv WHERE sv.ten LIKE %?1%" + "OR sv.maSv LIKE %?1%" + "OR sv.queQuan LIKE %?1%")
+	@Query("SELECT sv FROM Sinhvien sv WHERE sv.ten LIKE %?1%")
 	public List<Sinhvien> findAll(String keyword);
 }

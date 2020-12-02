@@ -42,6 +42,11 @@ public class DichvuController {
 		return null;
 	}
 	
+	@GetMapping("/tim/{keyword}")
+	public Iterable<Dichvu> searchDichvu(@PathVariable("keyword") String keyword){
+		return dvRepo.findAll(keyword);
+	}
+	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Dichvu themDichvu(@RequestBody Dichvu dv) {

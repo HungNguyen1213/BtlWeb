@@ -42,6 +42,11 @@ public class PhongController {
 		return null;
 	}
 	
+	@GetMapping("/tim/{keyword}")
+	public Iterable<Phong> searchPhong(@PathVariable("keyword") String keyword){
+		return phongRepo.findAll(keyword);
+	}
+	
 	@PostMapping(consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Phong themPhong(@RequestBody Phong phong) {

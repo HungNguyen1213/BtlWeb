@@ -13,7 +13,7 @@
 		</h2>
 		<hr>
 	</div>
-	<div align="center">
+	<div align="center" th:unless="${dv.maDv}">
 		<h2>Them Dich vu</h2>
 		<br>
 		<form method="post" th:object="${dv}">
@@ -33,6 +33,28 @@
 			</table>
 			<br>
 			<input type="submit" value="Them" class="btn btn-success" />
+		</form>
+	</div>
+	<div align="center" th:if="${dv.maDv}">
+		<h2>Sua Dich vu</h2>
+		<br>
+		<form method="post" th:object="${dv}">
+			<table>
+				<tr class="text-left">
+					<td>Ma dich vu</td>
+					<td><input type="text" th:field="*{maDv}" /></td>
+				</tr>
+				<tr class="text-left">
+					<td>Ten</td>
+					<td><input type="text" th:field="*{ten}" /></td>
+				</tr>
+				<tr class="text-left">
+					<td>Don gia</td>
+					<td><input type="text" th:field="*{donGia}" /></td>
+				</tr>
+			</table>
+			<br>
+			<input type="submit" value="Luu" class="btn btn-success" />
 		</form>
 	</div>
 </body>

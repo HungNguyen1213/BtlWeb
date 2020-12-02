@@ -12,7 +12,7 @@
 		</h2>
 		<hr>
 	</div>
-	<div align="center">
+	<div align="center" th:if="${sv.maSv}">
 		<h2>Sua Sinh vien</h2>
 		<br>
 		<form method="POST" th:object="${sv}">
@@ -43,6 +43,39 @@
 				</tr>
 			</table>
 			<br> <input type="submit" value="Luu" class="btn btn-success" />
+		</form>
+	</div>
+	<div align="center" th:unless="${sv.maSv}">
+		<h2>Them Sinh vien</h2>
+		<br>
+		<form method="POST" th:object="${sv}">
+			<table>
+				<tr class="text-left">
+					<td>Ma sinh vien</td>
+					<td><input type="text" th:field="*{maSv}" /></td>
+				</tr>
+				<tr class="text-left">
+					<td>Ten</td>
+					<td><input type="text" th:field="*{ten}" /></td>
+				</tr>
+				<tr class="text-left">
+					<td>Lop</td>
+					<td><input type="text" th:field="*{lop}" /></td>
+				</tr>
+				<tr class="text-left">
+					<td>So CMT</td>
+					<td><input type="text" th:field="*{soCMT}" /></td>
+				</tr>
+				<tr class="text-left">
+					<td>Ngay sinh</td>
+					<td><input type="text" th:field="*{ngaySinh}" /></td>
+				</tr>
+				<tr class="text-left">
+					<td>Que quan</td>
+					<td><input type="text" th:field="*{queQuan}" /></td>
+				</tr>
+			</table>
+			<br> <input type="submit" value="Them" class="btn btn-success" />
 		</form>
 	</div>
 </body>

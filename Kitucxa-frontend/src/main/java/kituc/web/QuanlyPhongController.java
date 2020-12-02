@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import kituc.model.Phong;
@@ -29,7 +30,7 @@ public class QuanlyPhongController {
 	@GetMapping("/them")
 	private String showThemPhongFrom(Model model) {
 		model.addAttribute("phong", new Phong());
-		return "themPhong";
+		return "phongForm";
 	}
 	
 	@PostMapping("/them")
@@ -42,7 +43,7 @@ public class QuanlyPhongController {
 	private String showSuaPhongForm(Model model, @PathVariable("soPhong") String soPhong) {
 		Phong phong = rest.getForObject("http://localhost:8080/phong/{soPhong}", Phong.class, soPhong);
 		model.addAttribute("phong", phong);
-		return "suaPhong";
+		return "phongForm";
 	}
 	
 	@PostMapping("/sua/{soPhong}")
@@ -55,5 +56,12 @@ public class QuanlyPhongController {
 	private String xoaPhong(@PathVariable("soPhong") String soPhong) {
 		rest.delete("http://localhost:8080/phong/{soPhong}", soPhong);
 		return "redirect:/quan-ly-phong";
+	}
+	
+	@GetMapping("/tim")
+	private String timPhong (Model model, @RequestParam("keyword") String keyword) {
+		List<Phong> listPhong = Arrays.asList(rest.getForObject("http://localhost:8080/phong/tim/{keyword}", Phong[].class, keyword));
+		model.addAttribute("listPhong", listPhong);
+		return "quanlyPhong";
 	}
 }
