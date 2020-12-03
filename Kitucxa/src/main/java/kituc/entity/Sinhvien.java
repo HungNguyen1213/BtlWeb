@@ -32,4 +32,7 @@ public class Sinhvien extends Thanhvien{
 	
 	@OneToMany(mappedBy = "sv3")
 	private List<DichvuSudung> dvsd = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "sv4")
+	private List<Xe> xe = new ArrayList<>();
 }

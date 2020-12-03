@@ -1,7 +1,5 @@
 package kituc.web.api;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,51 +13,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import kituc.data.PhongRepository;
 import kituc.entity.Phong;
+import kituc.service.PhongService;
 
 @RestController
 @RequestMapping(path = "/phong", produces = "application/json")
 @CrossOrigin(origins = "*")
 public class PhongController {
-	PhongRepository phongRepo;
 	@Autowired
-	public PhongController(PhongRepository phongRepo) {
-		this.phongRepo = phongRepo;
-	}
+	private PhongService phongService;
 	
 	@GetMapping
 	public Iterable<Phong> getAllPhong(){
-		return phongRepo.findAll();
+		return phongService.getAllPhong();
 	}
 	
 	@GetMapping("/{soPhong}")
 	public Phong getPhongBySophong(@PathVariable("soPhong") String soPhong) {
-		Optional<Phong> optPhong = phongRepo.findById(soPhong);
-		if(optPhong.isPresent()) {
-			return optPhong.get();
-		}
-		return null;
+		return phongService.getPhongBySophong(soPhong);
 	}
 	
 	@GetMapping("/tim/{keyword}")
 	public Iterable<Phong> searchPhong(@PathVariable("keyword") String keyword){
-		return phongRepo.findAll(keyword);
+		return phongService.searchPhong(keyword);
 	}
 	
 	@PostMapping(consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Phong themPhong(@RequestBody Phong phong) {
-		return phongRepo.save(phong);
+		return phongService.luuPhong(phong);
 	}
 	
 	@PutMapping("/{soPhong}")
 	public Phong suaPhong(@RequestBody Phong phong) {
-		return phongRepo.save(phong);
+		return phongService.luuPhong(phong);
 	}
 	
 	@DeleteMapping("/{soPhong}")
 	public void xoaPhong(@PathVariable("soPhong") String soPhong) {
-		phongRepo.deleteById(soPhong);
+		phongService.xoaPhong(soPhong);
 	}
 }

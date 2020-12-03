@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,5 +35,9 @@ public class Xe {
 	
 	@OneToMany(mappedBy = "xe2")
 	private List<Vexe> vexe = new ArrayList<>();
+	
+	@ManyToOne
+	@JoinColumn(name = "ma_sinhvien")
+	private Sinhvien sv4;
 	
 }
