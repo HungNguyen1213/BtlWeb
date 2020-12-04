@@ -29,8 +29,8 @@ public class PhongController {
 	}
 	
 	@GetMapping("/{id}")
-	public Phong getPhongById(@PathVariable("id") int id) {
-		return phongService.getPhongById(id);
+	public Phong getPhongBySophong(@PathVariable("soPhong") int id) {
+		return phongService.getPhongBySophong(id);
 	}
 	
 	@GetMapping("/tim/{keyword}")
@@ -44,13 +44,13 @@ public class PhongController {
 		return phongService.luuPhong(phong);
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/{soPhong}")
 	public Phong suaPhong(@RequestBody Phong phong) {
 		return phongService.luuPhong(phong);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void xoaPhong(@PathVariable("id") int id) {
+	public void xoaPhong(@PathVariable("soPhong") int id) {
 		phongService.xoaPhong(id);
 	}
 }

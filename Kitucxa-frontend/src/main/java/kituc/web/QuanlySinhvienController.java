@@ -54,7 +54,7 @@ public class QuanlySinhvienController {
 	}
 	
 	@GetMapping("/xoa/{id}")
-	private String xoaSinhvien(@PathVariable("id") int id) {
+	private String xoaSinhvien(@PathVariable("ma") int id) {
 		rest.delete("http://localhost:8080/sinhvien/{id}", id);
 		return "redirect:/quan-ly-sinh-vien";
 	}

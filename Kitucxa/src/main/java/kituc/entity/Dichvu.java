@@ -1,5 +1,6 @@
 package kituc.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,13 +17,15 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="dichvu")
 @SecondaryTable(name = "vethang", pkJoinColumns = @PrimaryKeyJoinColumn(name = "dichvuid"))
@@ -53,7 +56,7 @@ public abstract class Dichvu {
 
 	@Embedded
 	private Vethang vethang;
-
+	
 	@OneToOne
 	@JoinColumn(name = "xeid", table = "vethang")
 	private Xe xe;

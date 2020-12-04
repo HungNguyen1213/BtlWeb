@@ -17,7 +17,7 @@ public class DichvuService {
 		 return dvRepo.findAll();
 	}
 	
-	public Dichvu getDichvuById(int id) {
+	public Dichvu getDichvuByMavd(int id) {
 		Optional<Dichvu> optDv = dvRepo.findById(id);
 		if(optDv.isPresent()) {
 			return optDv.get();

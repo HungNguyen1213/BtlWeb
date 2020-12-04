@@ -18,6 +18,9 @@ public class Xegui {
 	private float dongia;
 
 	private Date ngaysd;
+	
+//	private Xe xe;
+//	private Sinhvien sinhvien;
 
 	private Sinhvien sinhvien;
 

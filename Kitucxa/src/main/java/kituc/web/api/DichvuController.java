@@ -29,8 +29,8 @@ public class DichvuController {
 	}
 	
 	@GetMapping("/{id}")
-	public Dichvu getDichvuById(@PathVariable("id") int id) {
-		return dvService.getDichvuById(id);
+	public Dichvu getDichvuByMavd(@PathVariable("maDv") int id) {
+		return dvService.getDichvuByMavd(id);
 	}
 	
 	@GetMapping("/tim/{keyword}")
@@ -50,7 +50,7 @@ public class DichvuController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void xoaDichvu(@PathVariable("id") int id) {
+	public void xoaDichvu(@PathVariable("maDv") int id) {
 		dvService.xoaDichvu(id);
 	}
 }

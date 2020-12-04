@@ -41,7 +41,7 @@ public class QuanlyPhongController {
 	
 	@GetMapping("/sua/{id}")
 	private String showSuaPhongForm(Model model, @PathVariable("id") int id) {
-		Phong phong = rest.getForObject("http://localhost:8080/phong/{id}", Phong.class, id);
+		Phong phong = rest.getForObject("http://localhost:8080/phong/{soPhong}", Phong.class, id);
 		model.addAttribute("phong", phong);
 		return "phongForm";
 	}
