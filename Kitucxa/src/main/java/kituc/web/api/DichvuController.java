@@ -1,7 +1,5 @@
 package kituc.web.api;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,51 +13,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import kituc.data.DichvuRepository;
 import kituc.entity.Dichvu;
+import kituc.service.DichvuService;
 
 @RestController
 @RequestMapping(path = "/dichvu", produces = "application/json")
 @CrossOrigin(origins = "*")
 public class DichvuController {
-	DichvuRepository dvRepo;
 	@Autowired
-	public DichvuController(DichvuRepository dvRepo) {
-		this.dvRepo = dvRepo;
-	}
+	private DichvuService dvService;
 	
 	@GetMapping
 	public Iterable<Dichvu> getAllDichvu() {
-		 return dvRepo.findAll();
+		 return dvService.getAllDichvu();
 	}
 	
-	@GetMapping("/{id}")
-	public Dichvu getDichvuByMavd(@PathVariable("id") int id) {
-		Optional<Dichvu> optDv = dvRepo.findById(id);
-		if(optDv.isPresent()) {
-			return optDv.get();
-		}
-		return null;
+	@GetMapping("/{maDv}")
+	public Dichvu getDichvuByMavd(@PathVariable("maDv") String maDv) {
+		return dvService.getDichvuByMavd(maDv);
 	}
 	
 	@GetMapping("/tim/{keyword}")
 	public Iterable<Dichvu> searchDichvu(@PathVariable("keyword") String keyword){
-		return dvRepo.findAll(keyword);
+		return dvService.searchDichvu(keyword);
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Dichvu themDichvu(@RequestBody Dichvu dv) {
-		return dvRepo.save(dv);
+		return dvService.luuDichvu(dv);
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/{maDv}")
 	public Dichvu suaDichvu(@RequestBody Dichvu dv) {
-		return dvRepo.save(dv);
+		return dvService.luuDichvu(dv);
 	}
 	
-	@DeleteMapping("/{id}")
-	public void xoaDichvu(@PathVariable("id") int id) {
-		dvRepo.deleteById(id);
+	@DeleteMapping("/{maDv}")
+	public void xoaDichvu(@PathVariable("maDv") String maDv) {
+		dvService.xoaDichvu(maDv);
 	}
 }
