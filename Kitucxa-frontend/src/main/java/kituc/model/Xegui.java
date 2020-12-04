@@ -11,13 +11,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Vethang extends Dichvu{
-		
+public class Xegui {
+
 	private int id;
+
+	private float dongia;
+
+	private Date ngaysd;
 	
-	private Date thang;
-	
-	private int solanguitoida;
-	
-	private Xe xe;	
+//	private Xe xe;
+//	private Sinhvien sinhvien;
+
+	private Sinhvien sinhvien;
+
+	private Xe xegui;
 }

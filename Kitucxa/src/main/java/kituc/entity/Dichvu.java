@@ -1,12 +1,23 @@
 package kituc.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
+import javax.persistence.Table;
+
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,22 +27,37 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Dichvu {
+@Table(name="dichvu")
+@SecondaryTable(name = "vethang", pkJoinColumns = @PrimaryKeyJoinColumn(name = "dichvuid"))
+public abstract class Dichvu {
 	@Id
-	private String maDv;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	
-	@Column
+	@Column(name="ten")
 	private String ten;
 	
-	@Column
+	@Column(name="dongia")
 	private float donGia;
 	
-	@OneToMany(mappedBy = "dv1")
-	private List<DichvuSudung> dvsd1 = new ArrayList<>();
+	@Column(name="thoigiansd")
+	private Date thoigiansd;
 	
-	@OneToMany(mappedBy = "dv2")
-	private List<Vethang> vethang = new ArrayList<>();
+	@Column(name="thang", table = "vethang")
+	private Date thang;
 	
-	@OneToMany(mappedBy = "dv3")
-	private List<Vexe> vexe = new ArrayList<>();
+	@Column(name="solanguitoida", table = "vethang")
+	private int solanguitoida;
+	
+	
+	//quan hệ 1-n với dịch vụ sử dụng
+	@OneToMany(mappedBy = "dichvu")
+	private List<DichvuSudung> dvsd;
+
+	@Embedded
+	private Vethang vethang;
+	
+	@OneToOne
+	@JoinColumn(name = "xeid", table = "vethang")
+	private Xe xe;
 }

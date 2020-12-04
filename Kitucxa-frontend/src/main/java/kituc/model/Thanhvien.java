@@ -1,5 +1,9 @@
 package kituc.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,13 +11,22 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Thanhvien {
-	private int ma;
+public abstract class Thanhvien{
+
+	private int id;
+	
 	private String ten;
-	private String taikhoan;
+	
+	private String username;
+	
 	private String password;
+	
 	private String soCMT;
-	private String queQuan;
-	private String ngaySinh;
-	private String chucNang;
+	
+	private String quequan;
+	
+	private String ngaysinh;
+	
+	private String vitri;
+	
 }

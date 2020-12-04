@@ -3,6 +3,7 @@ package kituc.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,13 +13,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class Phong {
-	private String soPhong;
+
+	private int id;
 	
-	private String loaiPhong;
+	private String sophong;
 	
-	private float donGia;
+	private String loaiphong;
 	
-	private int soNguoitoida;
+	private float dongia;
+	
+	private int songuoitoida;
 	
 	private List<Phongthue> phongThue = new ArrayList<>();
 }

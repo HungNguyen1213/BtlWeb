@@ -5,9 +5,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,18 +25,19 @@ import lombok.NoArgsConstructor;
 @Table(name = "xe")
 public class Xe {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(name="bienso")
 	private String bienSo;
 	
-	@Column
-	private String loai;
+	@Column(name="loaixe")
+	private String loaixe;
 	
-	@Column
-	private String mau;
+	@OneToOne(mappedBy = "xe")
+	private Vethang vethang; 
 	
-	@OneToMany(mappedBy = "xe1")
-	private List<Vethang> vethang = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "xe2")
-	private List<Vexe> vexe = new ArrayList<>();
+	@OneToMany(mappedBy = "xegui")
+	private List<Xegui> xegui = new ArrayList<>();
 	
 }

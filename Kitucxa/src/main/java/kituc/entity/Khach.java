@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,21 +22,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "khach")
+@Table(name="khach")
 public class Khach {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ma;
+	private int id;
 	
-	@Column
+	@Column(name ="soCMT")
 	private String soCMT;
 	
-	@Column
+	@Column(name="ten")
 	private String ten;
 	
-	@Column
-	private Date ngaySinh;
+	@Column(name="ngaysinh")
+	private Date ngaysinh;
 	
-	@OneToMany(mappedBy = "khach")
-	private List<SinhvienKhach> svKs = new ArrayList<>();
+	@Column(name="ngayden")
+	private Date ngayden;
+	
+	// quan hệ n-1 với sinh viên
+	@ManyToOne
+	@JoinColumn(name="sinhvienid")
+	private Sinhvien sinhvien;
 }

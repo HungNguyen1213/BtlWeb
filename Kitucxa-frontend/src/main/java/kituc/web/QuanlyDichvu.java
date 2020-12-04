@@ -48,7 +48,7 @@ public class QuanlyDichvu {
 	
 	@PostMapping("/sua/{maDv}")
 	private String suaDichvu(@ModelAttribute("dv") Dichvu dv) {
-		rest.put("http://localhost:8080/dichvu/{maDv}", dv, dv.getMaDv());
+		rest.put("http://localhost:8080/dichvu/{maDv}", dv, dv.getId());
 		return "redirect:/quan-ly-dich-vu";
 	}
 	

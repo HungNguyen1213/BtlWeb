@@ -2,6 +2,7 @@ package kituc.model;
 
 import java.util.Date;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,16 +10,20 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class DichvuSudung {
 	
-	private int ma;
+	private int id;
 	
-	private Date ngaySudung;
-	
-	private Sinhvien sv3;
-	
-	private Dichvu dv1;
-	
-	private Hoadon hoadon;
 
+	private Date ngaysd;
+	
+
+	private float dongia;
+	
+	private Dichvu dichvu;
+	
+	private Sinhvien sinhvien;
+	
+	
 }

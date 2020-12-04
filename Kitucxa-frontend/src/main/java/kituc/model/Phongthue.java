@@ -1,5 +1,8 @@
 package kituc.model;
 
+import java.util.Date;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,15 +10,19 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Phongthue {
+
+	private int id;
 	
-	private int ma;
+	private float dongia;
 	
-	private int thang;
+	private Date thoigianbd;
+	
+	private Date thoigiankt;
 	
 	private Phong phong;
+
+	private Sinhvien sinhvien;
 	
-	private Sinhvien sv2;
-	
-	private Hoadon hoadon;
 }

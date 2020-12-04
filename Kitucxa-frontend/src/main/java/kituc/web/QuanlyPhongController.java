@@ -48,7 +48,7 @@ public class QuanlyPhongController {
 	
 	@PostMapping("/sua/{soPhong}")
 	private String suaPhong(@ModelAttribute("phong") Phong phong) {
-		rest.put("http://localhost:8080/phong/{soPhong}", phong, phong.getSoPhong());
+		rest.put("http://localhost:8080/phong/{soPhong}", phong, phong.getSophong());
 		return "redirect:/quan-ly-phong";
 	}
 	

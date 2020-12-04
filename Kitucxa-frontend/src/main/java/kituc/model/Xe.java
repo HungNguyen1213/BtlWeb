@@ -3,6 +3,7 @@ package kituc.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,16 +11,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Xe {
-	
+
+	private int id;
+
 	private String bienSo;
+
+	private String loaixe;
+
+	private Vethang vethang; 
 	
-	private String loai;
-	
-	private String mau;
-	
-	private List<Vethang> vethang = new ArrayList<>();
-	
-	private List<Vexe> vexe = new ArrayList<>();
+	private List<Xegui> xegui = new ArrayList<>();
 	
 }

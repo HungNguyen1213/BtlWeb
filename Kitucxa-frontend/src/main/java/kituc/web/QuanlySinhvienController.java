@@ -40,22 +40,22 @@ public class QuanlySinhvienController {
 		return "redirect:/quan-ly-sinh-vien";
 	}
 	
-	@GetMapping("/sua/{ma}")
-	private String showSuaSinhvienForm(Model model, @PathVariable("ma") int ma) {
-		Sinhvien sv =rest.getForObject("http://localhost:8080/sinhvien/{ma}", Sinhvien.class, ma);
+	@GetMapping("/sua/{id}")
+	private String showSuaSinhvienForm(Model model, @PathVariable("id") int ma) {
+		Sinhvien sv =rest.getForObject("http://localhost:8080/sinhvien/{id}", Sinhvien.class, ma);
 		model.addAttribute("sv", sv);
 		return "sinhvienForm";
 	}
 	
-	@PostMapping("/sua/{ma}")
+	@PostMapping("/sua/{id}")
 	private String suaSinhvien(@ModelAttribute("sv") Sinhvien sv) {
-		rest.put("http://localhost:8080/sinhvien/{ma}", sv, sv.getMa());
+		rest.put("http://localhost:8080/sinhvien/{id}", sv, sv.getId());
 		return "redirect:/quan-ly-sinh-vien";
 	}
 	
-	@GetMapping("/xoa/{ma}")
-	private String xoaSinhvien(@PathVariable("ma") int ma) {
-		rest.delete("http://localhost:8080/sinhvien/{ma}", ma);
+	@GetMapping("/xoa/{id}")
+	private String xoaSinhvien(@PathVariable("ma") int id) {
+		rest.delete("http://localhost:8080/sinhvien/{id}", id);
 		return "redirect:/quan-ly-sinh-vien";
 	}
 	

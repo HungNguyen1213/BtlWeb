@@ -3,13 +3,13 @@ package kituc.entity;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -20,25 +20,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "sinhvien_khach")
-public class SinhvienKhach {
+@Table(name="xegui")
+public class Xegui {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ma;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	
-	@Column
-	private Date ngayDen;
+	@Column(name="dongia")
+	private float dongia;
+	
+	@Column(name="ngaysd")
+	private Date ngaysd;
+	
+//	private Xe xe;
+//	private Sinhvien sinhvien;
 	
 	@ManyToOne
-    @JoinColumn(name = "sinhvien_ma")	
-    private Sinhvien sv1;
+	@JoinColumn(name="sinhvienid")
+	private Sinhvien sinhvien;
 	
 	@ManyToOne
-	@JoinColumn(name = "khach_ma")
-	private Khach khach;
-	
-	@PrePersist
-	void ngayDen() {
-		this.ngayDen = new Date();
-	}
+	@JoinColumn(name="xeid")
+	private Xe xegui;
 }

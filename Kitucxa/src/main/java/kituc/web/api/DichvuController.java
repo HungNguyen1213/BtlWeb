@@ -33,9 +33,9 @@ public class DichvuController {
 		 return dvRepo.findAll();
 	}
 	
-	@GetMapping("/{maDv}")
-	public Dichvu getDichvuByMavd(@PathVariable("maDv") String maDv) {
-		Optional<Dichvu> optDv = dvRepo.findById(maDv);
+	@GetMapping("/{id}")
+	public Dichvu getDichvuByMavd(@PathVariable("id") int id) {
+		Optional<Dichvu> optDv = dvRepo.findById(id);
 		if(optDv.isPresent()) {
 			return optDv.get();
 		}
@@ -53,13 +53,13 @@ public class DichvuController {
 		return dvRepo.save(dv);
 	}
 	
-	@PutMapping("/{maDv}")
+	@PutMapping("/{id}")
 	public Dichvu suaDichvu(@RequestBody Dichvu dv) {
 		return dvRepo.save(dv);
 	}
 	
-	@DeleteMapping("/{maDv}")
-	public void xoaDichvu(@PathVariable("maDv") String maDv) {
-		dvRepo.deleteById(maDv);
+	@DeleteMapping("/{id}")
+	public void xoaDichvu(@PathVariable("id") int id) {
+		dvRepo.deleteById(id);
 	}
 }

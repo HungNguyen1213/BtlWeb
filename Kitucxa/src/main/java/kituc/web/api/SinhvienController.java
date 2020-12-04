@@ -41,9 +41,9 @@ public class SinhvienController {
 		return svRepo.findAll(keyword);
 	}
 	
-	@GetMapping("/{ma}")
-	public Sinhvien sinhvienByMa(@PathVariable("ma") int ma) {
-		Optional<Sinhvien> optSv = svRepo.findById(ma);
+	@GetMapping("/{id}")
+	public Sinhvien sinhvienByMa(@PathVariable("id") int id) {
+		Optional<Sinhvien> optSv = svRepo.findById(id);
 		if (optSv.isPresent()) {
 			return optSv.get();
 		}
@@ -56,13 +56,13 @@ public class SinhvienController {
 		return svRepo.save(sv);
 	}
 	
-	@PutMapping("/{ma}")
+	@PutMapping("/{id}")
 	public Sinhvien suaSinhvien(@RequestBody Sinhvien sv) {
 		return svRepo.save(sv);
 	}
 	
-	@DeleteMapping("/{ma}")
-	public void xoaSinhvien(@PathVariable("ma") int ma) {
-		svRepo.deleteById(ma);;
+	@DeleteMapping("/{id}")
+	public void xoaSinhvien(@PathVariable("id") int id) {
+		svRepo.deleteById(id);;
 	}
 }

@@ -1,5 +1,7 @@
 package kituc.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,23 +20,31 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "phongthue")
+@Table(name="phongthue")
 public class Phongthue {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ma;
+	private int id;
 	
-	@Column
-	private int thang;
+	@Column(name="dongia")
+	private float dongia;
 	
+	@Column(name="thoigianbd")
+	private Date thoigianbd;
+	
+	@Column(name="thoigiankt")
+	private Date thoigiankt;
+	
+//	private Phong phong;
+//	private Sinhvien sinhvien;
+	
+	// quan hệ n-1 với phòng
 	@ManyToOne
-	@JoinColumn(name = "phong_sophong")
+	@JoinColumn(name = "phongid")
 	private Phong phong;
 	
 	@ManyToOne
-	@JoinColumn(name = "sinhvien_ma")
-	private Sinhvien sv2;
+	@JoinColumn(name = "sinhvienid")
+	private Sinhvien sinhvien;
 	
-	@OneToOne(mappedBy = "phongthue")
-	private Hoadon hoadon;
 }

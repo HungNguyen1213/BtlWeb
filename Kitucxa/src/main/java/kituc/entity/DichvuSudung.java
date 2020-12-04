@@ -20,29 +20,30 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "dichvusudung")
+@Table(name="dichvusudung")
 public class DichvuSudung {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ma;
+	private int id;
 	
-	@Column
-	private Date ngaySudung;
+	@Column(name ="ngaysd")
+	private Date ngaysd;
 	
-	@ManyToOne
-	@JoinColumn(name = "sinhvien_ma")
-	private Sinhvien sv3;
-	
-	@ManyToOne
-	@JoinColumn(name = "dichvu_ma")
-	private Dichvu dv1;
+	@Column(name="dongia")
+	private float dongia;
 	
 	@ManyToOne
-	@JoinColumn(name = "hoadon_ma")
-	private Hoadon hoadon;
+	@JoinColumn(name = "dichvuid")
+	private Dichvu dichvu;
 	
+	@ManyToOne
+	@JoinColumn(name = "sinhvienid")
+	private Sinhvien sinhvien;
+
 	@PrePersist
 	void ngaySudung() {
-		this.ngaySudung = new Date();
+		this.ngaysd = new Date();
 	}
+	
+	
 }

@@ -33,9 +33,9 @@ public class PhongController {
 		return phongRepo.findAll();
 	}
 	
-	@GetMapping("/{soPhong}")
-	public Phong getPhongBySophong(@PathVariable("soPhong") String soPhong) {
-		Optional<Phong> optPhong = phongRepo.findById(soPhong);
+	@GetMapping("/{id}")
+	public Phong getPhongBySophong(@PathVariable("id") int id) {
+		Optional<Phong> optPhong = phongRepo.findById(id);
 		if(optPhong.isPresent()) {
 			return optPhong.get();
 		}
@@ -53,13 +53,13 @@ public class PhongController {
 		return phongRepo.save(phong);
 	}
 	
-	@PutMapping("/{soPhong}")
+	@PutMapping("/{id}")
 	public Phong suaPhong(@RequestBody Phong phong) {
 		return phongRepo.save(phong);
 	}
 	
-	@DeleteMapping("/{soPhong}")
-	public void xoaPhong(@PathVariable("soPhong") String soPhong) {
-		phongRepo.deleteById(soPhong);
+	@DeleteMapping("/{id}")
+	public void xoaPhong(@PathVariable("id") int id) {
+		phongRepo.deleteById(id);
 	}
 }
