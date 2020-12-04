@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Dichvu {
+public abstract class Dichvu {
 	private int id;
 
 	private String ten;

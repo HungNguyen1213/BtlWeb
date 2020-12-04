@@ -29,7 +29,7 @@ public class QuanlyDichvu {
 	
 	@GetMapping("/them")
 	private String showThemDichvuForm(Model model) {
-		model.addAttribute("dv", new Dichvu());
+		model.addAttribute("dv", new Dichvu() {});
 		return "dichvuForm";
 	}
 	
