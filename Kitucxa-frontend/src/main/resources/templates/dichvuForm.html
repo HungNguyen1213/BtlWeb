@@ -13,14 +13,14 @@
 		</h2>
 		<hr>
 	</div>
-	<div align="center" th:unless="${dv.maDv}">
+	<div align="center" th:unless="${dv.id}">
 		<h2>Them Dich vu</h2>
 		<br>
 		<form method="post" th:object="${dv}">
 			<table>
 				<tr class="text-left">
 					<td>Ma dich vu</td>
-					<td><input type="text" th:field="*{maDv}" /></td>
+					<td><input type="text" th:field="*{id}" /></td>
 				</tr>
 				<tr class="text-left">
 					<td>Ten</td>
@@ -28,21 +28,21 @@
 				</tr>
 				<tr class="text-left">
 					<td>Don gia</td>
-					<td><input type="text" th:field="*{donGia}" /></td>
+					<td><input type="text" th:field="*{dongia}" /></td>
 				</tr>
 			</table>
 			<br>
 			<input type="submit" value="Them" class="btn btn-success" />
 		</form>
 	</div>
-	<div align="center" th:if="${dv.maDv}">
+	<div align="center" th:if="${dv.id}">
 		<h2>Sua Dich vu</h2>
 		<br>
 		<form method="post" th:object="${dv}">
 			<table>
 				<tr class="text-left">
 					<td>Ma dich vu</td>
-					<td><input type="text" th:field="*{maDv}" /></td>
+					<td><input type="text" th:field="*{id}" /></td>
 				</tr>
 				<tr class="text-left">
 					<td>Ten</td>
@@ -50,7 +50,7 @@
 				</tr>
 				<tr class="text-left">
 					<td>Don gia</td>
-					<td><input type="text" th:field="*{donGia}" /></td>
+					<td><input type="text" th:field="*{dongia}" /></td>
 				</tr>
 			</table>
 			<br>

@@ -17,8 +17,8 @@ public class PhongService {
 		return phongRepo.findAll();
 	}
 	
-	public Phong getPhongBySophong(String soPhong) {
-		Optional<Phong> optPhong = phongRepo.findById(soPhong);
+	public Phong getPhongBySophong(int id) {
+		Optional<Phong> optPhong = phongRepo.findById(id);
 		if(optPhong.isPresent()) {
 			return optPhong.get();
 		}
@@ -33,7 +33,7 @@ public class PhongService {
 		return phongRepo.save(phong);
 	}
 	
-	public void xoaPhong(String soPhong) {
-		phongRepo.deleteById(soPhong);
+	public void xoaPhong(int id) {
+		phongRepo.deleteById(id);
 	}
 }

@@ -42,8 +42,4 @@ public class Xe {
 	@OneToMany(mappedBy = "xegui")
 	private List<Xegui> xegui = new ArrayList<>();
 	
-	@ManyToOne
-	@JoinColumn(name = "ma_sinhvien")
-	private Sinhvien sv4;
-	
 }

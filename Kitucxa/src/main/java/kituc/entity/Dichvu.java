@@ -38,7 +38,7 @@ public abstract class Dichvu {
 	private String ten;
 	
 	@Column(name="dongia")
-	private float donGia;
+	private float dongia;
 	
 	@Column(name="thoigiansd")
 	private Date thoigiansd;

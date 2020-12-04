@@ -34,9 +34,9 @@ public class SinhvienController {
 		return svService.timSinhvien(keyword);
 	}
 	
-	@GetMapping("/{ma}")
-	public Sinhvien sinhvienByMa(@PathVariable("ma") int ma) {
-		return svService.sinhvienByMa(ma);
+	@GetMapping("/{id}")
+	public Sinhvien sinhvienByMa(@PathVariable("id") int id) {
+		return svService.sinhvienByMa(id);
 	}
 	
 	@PostMapping(consumes = "application/json")
@@ -45,13 +45,13 @@ public class SinhvienController {
 		return svService.luuSinhvien(sv);
 	}
 	
-	@PutMapping("/{ma}")
+	@PutMapping("/{id}")
 	public Sinhvien suaSinhvien(@RequestBody Sinhvien sv) {
 		return svService.luuSinhvien(sv);
 	}
 	
-	@DeleteMapping("/{ma}")
-	public void xoaSinhvien(@PathVariable("ma") int ma) {
-		svService.xoaSinhvien(ma);
+	@DeleteMapping("/{id}")
+	public void xoaSinhvien(@PathVariable("id") int id) {
+		svService.xoaSinhvien(id);
 	}
 }

@@ -21,7 +21,7 @@ public class Dichvu {
 	private String ten;
 	
 
-	private float donGia;
+	private float dongia;
 	
 
 	private Date thoigiansd;

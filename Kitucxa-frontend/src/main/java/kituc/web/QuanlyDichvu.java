@@ -39,22 +39,22 @@ public class QuanlyDichvu {
 		return "redirect:/quan-ly-dich-vu";
 	}
 	
-	@GetMapping("/sua/{maDv}")
-	private String showSuaDichvuForm(Model model, @PathVariable("maDv") String maDv) {
-		Dichvu dv = rest.getForObject("http://localhost:8080/dichvu/{maDv}", Dichvu.class, maDv);
+	@GetMapping("/sua/{id}")
+	private String showSuaDichvuForm(Model model, @PathVariable("id") int id) {
+		Dichvu dv = rest.getForObject("http://localhost:8080/dichvu/{id}", Dichvu.class, id);
 		model.addAttribute("dv", dv);
 		return "dichvuForm";
 	}
 	
-	@PostMapping("/sua/{maDv}")
+	@PostMapping("/sua/{id}")
 	private String suaDichvu(@ModelAttribute("dv") Dichvu dv) {
 		rest.put("http://localhost:8080/dichvu/{maDv}", dv, dv.getId());
 		return "redirect:/quan-ly-dich-vu";
 	}
 	
-	@GetMapping("/xoa/{maDv}")
-	private String xoaDichvu(@PathVariable("maDv") String maDv) {
-		rest.delete("http://localhost:8080/dichvu/{maDv}", maDv);
+	@GetMapping("/xoa/{id}")
+	private String xoaDichvu(@PathVariable("id") int id) {
+		rest.delete("http://localhost:8080/dichvu/{id}", id);
 		return "redirect:/quan-ly-dich-vu";
 	}
 	

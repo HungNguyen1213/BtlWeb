@@ -39,22 +39,22 @@ public class QuanlyPhongController {
 		return "redirect:/quan-ly-phong";
 	}
 	
-	@GetMapping("/sua/{soPhong}")
-	private String showSuaPhongForm(Model model, @PathVariable("soPhong") String soPhong) {
-		Phong phong = rest.getForObject("http://localhost:8080/phong/{soPhong}", Phong.class, soPhong);
+	@GetMapping("/sua/{id}")
+	private String showSuaPhongForm(Model model, @PathVariable("id") int id) {
+		Phong phong = rest.getForObject("http://localhost:8080/phong/{soPhong}", Phong.class, id);
 		model.addAttribute("phong", phong);
 		return "phongForm";
 	}
 	
-	@PostMapping("/sua/{soPhong}")
+	@PostMapping("/sua/{id}")
 	private String suaPhong(@ModelAttribute("phong") Phong phong) {
-		rest.put("http://localhost:8080/phong/{soPhong}", phong, phong.getSophong());
+		rest.put("http://localhost:8080/phong/{id}", phong, phong.getId());
 		return "redirect:/quan-ly-phong";
 	}
 	
-	@GetMapping("/xoa/{soPhong}")
-	private String xoaPhong(@PathVariable("soPhong") String soPhong) {
-		rest.delete("http://localhost:8080/phong/{soPhong}", soPhong);
+	@GetMapping("/xoa/{id}")
+	private String xoaPhong(@PathVariable("id") int id) {
+		rest.delete("http://localhost:8080/phong/{id}", id);
 		return "redirect:/quan-ly-phong";
 	}
 	

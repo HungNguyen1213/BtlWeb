@@ -21,8 +21,8 @@ public class SinhvienService {
 		return svRepo.findAll(keyword);
 	}
 	
-	public Sinhvien sinhvienByMa(int ma) {
-		Optional<Sinhvien> optSv = svRepo.findById(ma);
+	public Sinhvien sinhvienByMa(int id) {
+		Optional<Sinhvien> optSv = svRepo.findById(id);
 		if (optSv.isPresent()) {
 			return optSv.get();
 		}
@@ -33,7 +33,7 @@ public class SinhvienService {
 		return svRepo.save(sv);
 	}
 	
-	public void xoaSinhvien(int ma) {
-		svRepo.findById(ma);
+	public void xoaSinhvien(int id) {
+		svRepo.findById(id);
 	}
 }

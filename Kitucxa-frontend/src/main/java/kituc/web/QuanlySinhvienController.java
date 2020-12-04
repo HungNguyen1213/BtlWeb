@@ -41,8 +41,8 @@ public class QuanlySinhvienController {
 	}
 	
 	@GetMapping("/sua/{id}")
-	private String showSuaSinhvienForm(Model model, @PathVariable("id") int ma) {
-		Sinhvien sv =rest.getForObject("http://localhost:8080/sinhvien/{id}", Sinhvien.class, ma);
+	private String showSuaSinhvienForm(Model model, @PathVariable("id") int id) {
+		Sinhvien sv =rest.getForObject("http://localhost:8080/sinhvien/{id}", Sinhvien.class, id);
 		model.addAttribute("sv", sv);
 		return "sinhvienForm";
 	}

@@ -18,21 +18,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "sinhvien")
 public class Sinhvien extends Thanhvien{
-	@Column
-	private String maSv;
 	
-	@Column
-	private String lop;
+	@OneToMany(mappedBy = "sinhvien")
+	private List<Khach> khach = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "sv1")
-	private List<SinhvienKhach> svKs = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "sv2")
+	@OneToMany(mappedBy = "sinhvien")
 	private List<Phongthue> phongThue = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "sv3")
+	@OneToMany(mappedBy = "sinhvien")
 	private List<DichvuSudung> dvsd = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "sv4")
-	private List<Xe> xe = new ArrayList<>();
 }

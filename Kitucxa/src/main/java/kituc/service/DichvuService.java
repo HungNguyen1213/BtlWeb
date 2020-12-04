@@ -17,8 +17,8 @@ public class DichvuService {
 		 return dvRepo.findAll();
 	}
 	
-	public Dichvu getDichvuByMavd(String maDv) {
-		Optional<Dichvu> optDv = dvRepo.findById(maDv);
+	public Dichvu getDichvuByMavd(int id) {
+		Optional<Dichvu> optDv = dvRepo.findById(id);
 		if(optDv.isPresent()) {
 			return optDv.get();
 		}
@@ -33,7 +33,7 @@ public class DichvuService {
 		return dvRepo.save(dv);
 	}
 	
-	public void xoaDichvu(String maDv) {
-		dvRepo.deleteById(maDv);
+	public void xoaDichvu(int id) {
+		dvRepo.deleteById(id);
 	}
 }

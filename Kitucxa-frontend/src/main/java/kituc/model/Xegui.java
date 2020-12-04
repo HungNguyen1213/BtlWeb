@@ -24,5 +24,5 @@ public class Xegui {
 
 	private Sinhvien sinhvien;
 
-	private Xe xegui;
+	private Xe xe;
 }

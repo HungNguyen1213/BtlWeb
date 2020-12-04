@@ -30,11 +30,11 @@
 				<th>Sua/Xoa</th>
 			</tr>
 			<tr th:each="dv : ${listDv}">
-				<td th:utext="${dv.maDv}"></td>
+				<td th:utext="${dv.sophong}"></td>
 				<td th:utext="${dv.ten}"></td>
-				<td th:utext="${dv.donGia}"></td>
-				<td><a th:href="@{'/quan-ly-dich-vu/sua/' + ${dv.maDv}}" class="btn btn-success">Sua</a>&nbsp;&nbsp;&nbsp;&nbsp; 
-				    <a th:href="@{'/quan-ly-dich-vu/xoa/' + ${dv.maDv}}" class="btn btn-danger">Xoa</a></td>
+				<td th:utext="${dv.dongia}"></td>
+				<td><a th:href="@{'/quan-ly-dich-vu/sua/' + ${dv.sophong}}" class="btn btn-success">Sua</a>&nbsp;&nbsp;&nbsp;&nbsp; 
+				    <a th:href="@{'/quan-ly-dich-vu/xoa/' + ${dv.sophong}}" class="btn btn-danger">Xoa</a></td>
 			</tr>
 		</table>
 	</div>
