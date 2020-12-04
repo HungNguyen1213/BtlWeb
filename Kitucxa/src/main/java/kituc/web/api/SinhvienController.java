@@ -35,8 +35,8 @@ public class SinhvienController {
 	}
 	
 	@GetMapping("/{id}")
-	public Sinhvien sinhvienByMa(@PathVariable("id") int id) {
-		return svService.sinhvienByMa(id);
+	public Sinhvien sinhvienById(@PathVariable("id") int id) {
+		return svService.sinhvienById(id);
 	}
 	
 	@PostMapping(consumes = "application/json")

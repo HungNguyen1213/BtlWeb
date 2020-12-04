@@ -17,7 +17,7 @@ public class PhongService {
 		return phongRepo.findAll();
 	}
 	
-	public Phong getPhongBySophong(int id) {
+	public Phong getPhongById(int id) {
 		Optional<Phong> optPhong = phongRepo.findById(id);
 		if(optPhong.isPresent()) {
 			return optPhong.get();
