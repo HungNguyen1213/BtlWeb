@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -34,9 +33,6 @@ public class Phongthue {
 	
 	@Column(name="thoigiankt")
 	private Date thoigiankt;
-	
-//	private Phong phong;
-//	private Sinhvien sinhvien;
 	
 	// quan hệ n-1 với phòng
 	@ManyToOne

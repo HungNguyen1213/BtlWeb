@@ -16,7 +16,7 @@ public class Xe {
 
 	private int id;
 
-	private String bienSo;
+	private String bienso;
 
 	private String loaixe;
 
