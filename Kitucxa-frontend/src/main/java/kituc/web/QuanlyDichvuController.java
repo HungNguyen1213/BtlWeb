@@ -17,7 +17,7 @@ import kituc.model.Dichvu;
 
 @Controller
 @RequestMapping("/quan-ly-dich-vu")
-public class QuanlyDichvu {
+public class QuanlyDichvuController {
 	RestTemplate rest = new RestTemplate();
 	
 	@GetMapping

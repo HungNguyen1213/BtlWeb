@@ -19,8 +19,6 @@ public class Sinhvien extends Thanhvien{
 	
 	private List<Xegui> Xegui = new ArrayList<>();
 	
-	private List<DichvuSudung> dvsd = new ArrayList<>();
-	
 	private List<Phongthue> phongthue = new ArrayList<>();
 		
 }

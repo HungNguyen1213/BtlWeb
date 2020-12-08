@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "vethang")
+@Table(name = "tblvethang")
 @Embeddable
 public class Vethang extends Dichvu{
 

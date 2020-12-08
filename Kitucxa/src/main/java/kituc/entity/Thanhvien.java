@@ -18,10 +18,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name ="thanhvien")
-@SecondaryTable(name = "sinhvien", pkJoinColumns = @PrimaryKeyJoinColumn(name = "thanhvienid"))
-@SecondaryTable(name = "nvquanly", pkJoinColumns = @PrimaryKeyJoinColumn(name = "thanhvienid"))
-public abstract class Thanhvien{
+@Table(name ="tblthanhvien")
+@SecondaryTable(name = "tblsinhvien", pkJoinColumns = @PrimaryKeyJoinColumn(name = "thanhvienid"))
+@SecondaryTable(name = "tblnvquanly", pkJoinColumns = @PrimaryKeyJoinColumn(name = "thanhvienid"))
+public class Thanhvien{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -47,7 +47,7 @@ public abstract class Thanhvien{
 	@Column(name="vitri")
 	private String vitri;
 	
-	@Column(name="lop", table = "sinhvien")
+	@Column(name="lop", table = "tblsinhvien")
 	private String lop;
 	
 	@Embedded

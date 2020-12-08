@@ -36,7 +36,6 @@ public class QuanlySinhvienController {
 	@PostMapping("/them")
 	private String themSinhvien(@ModelAttribute("sv") Sinhvien sv) {
 		rest.postForObject("http://localhost:8080/sinhvien", sv, Sinhvien.class);
-		System.out.println(sv.getLop());
 		return "redirect:/quan-ly-sinh-vien";
 	}
 	

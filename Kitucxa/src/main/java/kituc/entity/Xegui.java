@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="xegui")
+@Table(name="tblxegui")
 public class Xegui {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
