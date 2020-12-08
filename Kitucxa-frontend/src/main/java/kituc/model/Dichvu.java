@@ -11,20 +11,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public abstract class Dichvu {
+public class Dichvu {
 	private int id;
 
 	private String ten;
 
 	private float dongia;
 
-	private Date thoigiansd;
-
 	private Date thang;
 
 	private int solanguitoida;
-
-	private List<DichvuSudung> dvsd;
 
 	private Vethang vethang;
 

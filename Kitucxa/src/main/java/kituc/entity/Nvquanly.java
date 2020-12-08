@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="nvquanly")
+@Table(name="tblnvquanly")
 @Embeddable
 public class Nvquanly extends Thanhvien{
 

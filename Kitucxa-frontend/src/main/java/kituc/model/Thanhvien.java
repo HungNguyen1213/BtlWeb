@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Thanhvien{
+public class Thanhvien{
 
 	private int id;
 	

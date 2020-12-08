@@ -24,9 +24,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="dichvu")
-@SecondaryTable(name = "vethang", pkJoinColumns = @PrimaryKeyJoinColumn(name = "dichvuid"))
-public abstract class Dichvu {
+@Table(name="tbldichvu")
+@SecondaryTable(name = "tblvethang", pkJoinColumns = @PrimaryKeyJoinColumn(name = "dichvuid"))
+public class Dichvu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -37,24 +37,16 @@ public abstract class Dichvu {
 	@Column(name="dongia")
 	private float dongia;
 	
-	@Column(name="thoigiansd")
-	private Date thoigiansd;
-	
-	@Column(name="thang", table = "vethang")
+	@Column(name="thang", table = "tblvethang")
 	private Date thang;
 	
-	@Column(name="solanguitoida", table = "vethang")
+	@Column(name="solanguitoida", table = "tblvethang")
 	private int solanguitoida;
-	
-	
-	//quan hệ 1-n với dịch vụ sử dụng
-	@OneToMany(mappedBy = "dichvu")
-	private List<DichvuSudung> dvsd;
 
 	@Embedded
 	private Vethang vethang;
 
 	@OneToOne
-	@JoinColumn(name = "xeid", table = "vethang")
+	@JoinColumn(name = "xeid", table = "tblvethang")
 	private Xe xe;
 }

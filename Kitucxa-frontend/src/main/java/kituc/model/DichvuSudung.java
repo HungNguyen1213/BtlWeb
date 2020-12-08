@@ -15,15 +15,13 @@ public class DichvuSudung {
 	
 	private int id;
 	
-
-	private Date ngaysd;
+	private Date thoigianbd;
 	
-
+	private Date thoigiankt;
+	
 	private float dongia;
 	
 	private Dichvu dichvu;
 	
 	private Sinhvien sinhvien;
-	
-	
 }

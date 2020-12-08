@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "sinhvien")
+@Table(name = "tblsinhvien")
 public class Sinhvien extends Thanhvien{
 	
 	@OneToMany(mappedBy = "sinhvien")
@@ -23,9 +23,6 @@ public class Sinhvien extends Thanhvien{
 	
 	@OneToMany(mappedBy = "sinhvien")
 	private List<Phongthue> phongThue = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "sinhvien")
-	private List<DichvuSudung> dvsd = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "sinhvien")
 	private List<Xegui> xegui = new ArrayList<>();

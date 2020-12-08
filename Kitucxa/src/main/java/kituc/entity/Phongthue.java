@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="phongthue")
+@Table(name="tblphongthue")
 public class Phongthue {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,4 +44,8 @@ public class Phongthue {
 	@JoinColumn(name = "sinhvienid")
 	private Sinhvien sinhvien;
 	
+	@PrePersist
+	void thoigianbd() {
+		this.thoigianbd = new Date();
+	}
 }

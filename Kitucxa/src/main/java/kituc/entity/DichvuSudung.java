@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,14 +21,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="dichvusudung")
+@Table(name="tbldichvusudung")
 public class DichvuSudung {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name ="ngaysd")
-	private Date ngaysd;
+	@Column(name ="thoigianbd")
+	private Date thoigianbd;
+	
+	@Column(name ="thoigiankt")
+	private Date thoigiankt;
 	
 	@Column(name="dongia")
 	private float dongia;
@@ -41,9 +45,7 @@ public class DichvuSudung {
 	private Sinhvien sinhvien;
 
 	@PrePersist
-	void ngaySudung() {
-		this.ngaysd = new Date();
+	void thoigianbd() {
+		this.thoigianbd = new Date();
 	}
-	
-	
 }
