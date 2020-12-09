@@ -14,7 +14,7 @@ public class Vethang implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Date thang;
+    private int thang;
     private int soLanGuiToiDa;
     @ManyToOne
     @JoinColumn(name = "dichVuId")
