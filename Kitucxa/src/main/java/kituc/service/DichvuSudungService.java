@@ -14,4 +14,8 @@ public class DichvuSudungService {
 	public DichvuSudung luuDvsd(DichvuSudung dvsd) {
 		return dvsdRepo.save(dvsd);
 	}
+	
+	public Iterable<DichvuSudung> getBySinhvienId(int id){
+		return dvsdRepo.findBySinhvienId(id);
+	}
 }
