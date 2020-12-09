@@ -1,11 +1,10 @@
 package kituc.model;
 
-import java.util.Date;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +18,7 @@ public class Xegui {
 
 	private Date ngaysd;
 
-	private Sinhvien sinhvien;
+	private Thanhvien sinhvien;
 
 	private Xe xe;
 }

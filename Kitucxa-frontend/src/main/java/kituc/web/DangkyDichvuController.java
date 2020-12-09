@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import kituc.model.Thanhvien;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 
 import kituc.model.Dichvu;
 import kituc.model.DichvuSudung;
-import kituc.model.Sinhvien;
 
 @Controller
 @RequestMapping("/dang-ky-dich-vu")
@@ -37,11 +37,11 @@ public class DangkyDichvuController {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date thoigiankt = formatter.parse(tgkt);
 		Dichvu dv = rest.getForObject("http://localhost:8080/dichvu/{id}", Dichvu.class, id);
-		Sinhvien sv = rest.getForObject("http://localhost:8080/sinhvien/{id}", Sinhvien.class, 1);
+		Thanhvien sv = rest.getForObject("http://localhost:8080/sinhvien/{id}", Thanhvien.class, 1);
 		dvsd.setThoigiankt(thoigiankt);
 		dvsd.setDongia(dv.getDongia());
 		dvsd.setDichvu(dv);
-		dvsd.setSinhvien(sv);
+		dvsd.setThanhvien(sv);
 		rest.postForObject("http://localhost:8080/dichvuSudung", dvsd, DichvuSudung.class);
 		return "redirect:/quan-ly-sinh-vien";
 	}

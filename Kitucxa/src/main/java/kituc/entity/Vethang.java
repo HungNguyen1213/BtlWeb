@@ -1,17 +1,25 @@
 package kituc.entity;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Data;
+
+import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Entity
 @Table(name = "tblvethang")
-@Embeddable
-public class Vethang extends Dichvu{
-
+public class Vethang implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private Date thang;
+    private int soLanGuiToiDa;
+    @ManyToOne
+    @JoinColumn(name = "dichVuId")
+    private Dichvu dichvu;
+    @OneToOne
+    @JoinColumn(name = "xeId")
+    private Xe xe;
 }

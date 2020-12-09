@@ -24,5 +24,7 @@ public class Thanhvien{
 	private String ngaysinh;
 	
 	private String vitri;
+
+	private String lop;
 	
 }

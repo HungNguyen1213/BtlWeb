@@ -1,10 +1,10 @@
 package kituc.model;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -22,5 +22,5 @@ public class Khach {
 
 	private Date ngayden;
 	
-	private Sinhvien sinhvien;
+	private Thanhvien sinhvien;
 }
