@@ -16,15 +16,15 @@ public class VeThangApi {
     @Autowired
     private VeThangService veThangService;
     @GetMapping
-    public List<Vethang> findAll(){
+    public List<VeThangRequest> findAll(){
         return veThangService.findAll();
     }
-    @GetMapping("/{id}")
-    public Vethang findById(@PathVariable Integer id){
-        return veThangService.findById(id);
-    }
+//    @GetMapping("/{id}")
+//    public VeThangRequest findById(@PathVariable Integer id){
+//        return veThangService.findById(id);
+//    }
     @GetMapping("/search/{bienSo}")
-    public List<Vethang> findByBienSo(@PathVariable String bienSo){
+    public List<VeThangRequest> findByBienSo(@PathVariable String bienSo){
         return veThangService.findByBienSo(bienSo);
     }
     @PostMapping
