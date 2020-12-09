@@ -25,7 +25,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="tbldichvu")
-@SecondaryTable(name = "tblvethang", pkJoinColumns = @PrimaryKeyJoinColumn(name = "dichvuid"))
 public class Dichvu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,17 +35,4 @@ public class Dichvu {
 	
 	@Column(name="dongia")
 	private float dongia;
-	
-	@Column(name="thang", table = "tblvethang")
-	private Date thang;
-	
-	@Column(name="solanguitoida", table = "tblvethang")
-	private int solanguitoida;
-
-	@Embedded
-	private Vethang vethang;
-
-	@OneToOne
-	@JoinColumn(name = "xeid", table = "tblvethang")
-	private Xe xe;
 }

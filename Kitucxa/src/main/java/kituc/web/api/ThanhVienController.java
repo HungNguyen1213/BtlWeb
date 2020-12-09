@@ -1,5 +1,7 @@
 package kituc.web.api;
 
+import kituc.entity.Thanhvien;
+import kituc.service.ThanhVienService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,45 +15,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import kituc.entity.Sinhvien;
-import kituc.service.SinhvienService;
-
 @RestController
-@RequestMapping(path = "/sinhvien", produces = "application/json")
+@RequestMapping(path = "/thanhvien", produces = "application/json")
 @CrossOrigin(origins = "*")
-public class SinhvienController {
+public class ThanhVienController {
 	@Autowired
-	private SinhvienService svService;
+	private ThanhVienService thanhVienService;
 	
 
 	@GetMapping
-	public Iterable<Sinhvien> getAllSinhvien() {
-		return svService.findAll();
+	public Iterable<Thanhvien> getAllSinhvien() {
+		return thanhVienService.findAll();
 	}
 	
 	@GetMapping("tim/{keyword}")
-	public Iterable<Sinhvien> timSinhvien(@PathVariable("keyword") String keyword){
-		return svService.timSinhvien(keyword);
+	public Iterable<Thanhvien> timSinhvien(@PathVariable("keyword") String keyword){
+		return thanhVienService.timSinhvien(keyword);
 	}
 	
 	@GetMapping("/{id}")
-	public Sinhvien sinhvienById(@PathVariable("id") int id) {
-		return svService.sinhvienById(id);
+	public Thanhvien sinhvienById(@PathVariable("id") int id) {
+		return thanhVienService.sinhvienById(id);
 	}
 	
 	@PostMapping(consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Sinhvien themSinhvien(@RequestBody Sinhvien sv) {
-		return svService.luuSinhvien(sv);
+	public Thanhvien themSinhvien(@RequestBody Thanhvien sv) {
+		return thanhVienService.luuSinhvien(sv);
 	}
 	
 	@PutMapping("/{id}")
-	public Sinhvien suaSinhvien(@RequestBody Sinhvien sv) {
-		return svService.luuSinhvien(sv);
+	public Thanhvien suaSinhvien(@RequestBody Thanhvien sv) {
+		return thanhVienService.luuSinhvien(sv);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void xoaSinhvien(@PathVariable("id") int id) {
-		svService.xoaSinhvien(id);
+		thanhVienService.xoaSinhvien(id);
 	}
 }

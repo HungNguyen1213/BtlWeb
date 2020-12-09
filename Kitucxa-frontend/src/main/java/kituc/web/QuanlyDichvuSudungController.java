@@ -3,6 +3,7 @@ package kituc.web;
 import java.util.Arrays;
 import java.util.List;
 
+import kituc.model.Thanhvien;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import kituc.model.DichvuSudung;
-import kituc.model.Sinhvien;
 
 @Controller
 @RequestMapping("/quan-ly-dich-vu-su-dung")
@@ -26,7 +26,7 @@ public class QuanlyDichvuSudungController {
 	
 	@GetMapping("/tim-sinh-vien")
 	private String timSinhvien(Model model, @RequestParam("keyword") String keyword) {
-		List<Sinhvien> listSv = Arrays.asList(rest.getForObject("http://localhost:8080/sinhvien/tim/{keyword}", Sinhvien[].class, keyword));
+		List<Thanhvien> listSv = Arrays.asList(rest.getForObject("http://localhost:8080/sinhvien/tim/{keyword}", Thanhvien[].class, keyword));
 		model.addAttribute("listSv", listSv);
 		return "quanlyDichvuSudung";
 	}
@@ -34,7 +34,7 @@ public class QuanlyDichvuSudungController {
 	@GetMapping("/sinhvien/{id}")
 	private String showDichvuSudungForSinhvien(Model model, @PathVariable("id") int id) {
 		List<DichvuSudung> listDvsd = Arrays.asList(rest.getForObject("http://localhost:8080/dichvuSudung/sinhvien/{id}", DichvuSudung[].class, id));
-		Sinhvien sv = rest.getForObject("http://localhost:8080/sinhvien/{id}", Sinhvien.class, id);
+		Thanhvien sv = rest.getForObject("http://localhost:8080/sinhvien/{id}", Thanhvien.class, id);
 		model.addAttribute("sv", sv);
 		model.addAttribute("listDvsd", listDvsd);
 		return "dichvuSudungForSinhvien";

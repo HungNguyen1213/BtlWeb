@@ -14,14 +14,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name ="tblthanhvien")
-@SecondaryTable(name = "tblsinhvien", pkJoinColumns = @PrimaryKeyJoinColumn(name = "thanhvienid"))
-@SecondaryTable(name = "tblnvquanly", pkJoinColumns = @PrimaryKeyJoinColumn(name = "thanhvienid"))
-public class Thanhvien{
+public class Thanhvien implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -46,13 +46,4 @@ public class Thanhvien{
 	
 	@Column(name="vitri")
 	private String vitri;
-	
-	@Column(name="lop", table = "tblsinhvien")
-	private String lop;
-	
-	@Embedded
-	private Sinhvien sinhvien;
-	
-	@Embedded
-	private Nvquanly nvquanly;
 }

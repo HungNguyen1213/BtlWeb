@@ -1,5 +1,6 @@
 package kituc.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "tblxe")
-public class Xe {
+public class Xe implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -32,10 +33,10 @@ public class Xe {
 	@Column(name="loaixe")
 	private String loaixe;
 	
-	@OneToOne(mappedBy = "xe")
-	private Dichvu dichvu; 
+//	@OneToOne(mappedBy = "xe")
+//	private Dichvu dichvu;
 	
-	@OneToMany(mappedBy = "xegui")
-	private List<Xegui> xegui = new ArrayList<>();
+//	@OneToMany(mappedBy = "xegui")
+//	private List<Xegui> xegui = new ArrayList<>();
 	
 }
