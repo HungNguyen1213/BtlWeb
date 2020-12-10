@@ -35,7 +35,7 @@ public class QuanLyThanhVienController {
 	@PostMapping("/them")
 	private String themSinhvien(@ModelAttribute("sv") Thanhvien sv) {
 		rest.postForObject("http://localhost:8080/thanhvien", sv, Thanhvien.class);
-		return "redirect:/quan-ly-sinh-vien";
+		return "redirect:/quan-ly-thanh-vien";
 	}
 	
 	@GetMapping("/sua/{id}")

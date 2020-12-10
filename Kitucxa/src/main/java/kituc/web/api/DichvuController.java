@@ -1,5 +1,7 @@
 package kituc.web.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import kituc.dto.DichvuDto;
 import kituc.entity.Dichvu;
 import kituc.service.DichvuService;
 
@@ -24,28 +27,28 @@ public class DichvuController {
 	private DichvuService dvService;
 	
 	@GetMapping
-	public Iterable<Dichvu> getAllDichvu() {
+	public List<DichvuDto> getAllDichvu() {
 		 return dvService.getAllDichvu();
 	}
 	
 	@GetMapping("/{id}")
-	public Dichvu getDichvuById(@PathVariable("id") int id) {
+	public DichvuDto getDichvuById(@PathVariable("id") int id) {
 		return dvService.getDichvuById(id);
 	}
 	
 	@GetMapping("/tim/{keyword}")
-	public Iterable<Dichvu> searchDichvu(@PathVariable("keyword") String keyword){
+	public List<DichvuDto> searchDichvu(@PathVariable("keyword") String keyword){
 		return dvService.searchDichvu(keyword);
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Dichvu themDichvu(@RequestBody Dichvu dv) {
+	public Dichvu themDichvu(@RequestBody DichvuDto dv) {
 		return dvService.luuDichvu(dv);
 	}
 	
 	@PutMapping("/{id}")
-	public Dichvu suaDichvu(@RequestBody Dichvu dv) {
+	public Dichvu suaDichvu(@RequestBody DichvuDto dv) {
 		return dvService.luuDichvu(dv);
 	}
 	

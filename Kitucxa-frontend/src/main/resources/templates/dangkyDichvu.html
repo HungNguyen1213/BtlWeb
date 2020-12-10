@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Đăng kí Dịch vụ</title>
+<meta charset="UTF-8" />
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 </head>
@@ -15,27 +16,30 @@
 	</div>
 	<br>
 	<div align="center">
-		<form method="POST">
+		<form method="POST" th:object="${dvsd}">
 			<div>
 				<table border="1" cellpadding="5">
 					<tr class="text-center">
 						<th>ID</th>
 						<th>Tên</th>
 						<th>Đơn giá</th>
+						<th>Thời gian sử dụng dịch vụ</th>
 						<th>Tích chọn</th>
 					</tr>
 					<tr th:each="dv : ${listDv}" class="text-center">
 						<td th:utext="${dv.id}"></td>
 						<td th:utext="${dv.ten}"></td>
 						<td th:utext="${dv.dongia}"></td>
-						<td><input type="radio" name="dichvu" th:value="${dv.id}" /></td>
+						<td th:utext="${dv.thoigiansddv}"></td>
+						<td><input type="radio" name="dv_id" th:value="${dv.id}" /></td>
 					</tr>
 				</table>
 			</div>
 			<br>
 			<div>
 				<h3>Nhập vào thời gian sử dụng:</h3>
-				<input type="date" name="thoigiankt" />
+				<input type="date" th:field="*{thoigianbd}" placeholder="Thời gian bắt đầu" />
+				<input type="date" th:field="*{thoigiankt}" placeholder="Thời gian kết thúc" />
 			</div>
 			<br> <input type="submit" value="Đăng kí"
 				class="btn btn-success" />

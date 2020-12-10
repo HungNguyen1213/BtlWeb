@@ -1,14 +1,12 @@
-package kituc.model;
+package kituc.dto;
 
-import lombok.AllArgsConstructor;
+import kituc.entity.Thanhvien;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-
-public class DichvuSudung {
+public class DichvuSudungDto {
 	
 	private int id;
 
@@ -20,7 +18,7 @@ public class DichvuSudung {
 	
 	private int thoigiansddv;
 
-	private Dichvu dichvu;
+	private DichvuDto dichvu;
 
 	private Thanhvien sinhvien;
 }

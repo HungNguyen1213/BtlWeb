@@ -1,11 +1,11 @@
-package kituc.model;
+package kituc.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Dichvu {
+public class DichvuDto {
 	
 	private int id;
 

@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Quản lý Dịch vụ sử dụng</title>
+<meta charset="UTF-8" />
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 </head>
@@ -14,26 +15,26 @@
 	<div align="center">
 	<h2>Thông tin sinh viên</h2>
 	<br>
-		<table>
+		<table cellpadding="10">
 				<tr class="text-left">
 					<td>Tên</td>
-					<td th:text="${sv.ten}"></td>
+					<td th:text="': ' + ${sv.ten}"></td>
 				</tr>
 				<tr class="text-left">
 					<td>Lớp</td>
-					<td th:text="${lop}"></td>
+					<td th:text="': ' + ${sv.lop}"></td>
 				</tr>
 				<tr class="text-left">
 					<td>Số CMT</td>
-					<td th:text="${sv.soCMT}"></td>
+					<td th:text="': ' + ${sv.soCMT}"></td>
 				</tr>
 				<tr class="text-left">
 					<td>Ngày sinh</td>
-					<td th:text="${sv.ngaysinh}">></td>
+					<td th:text="': ' + ${sv.ngaysinh}">></td>
 				</tr>
 				<tr class="text-left">
 					<td>Quê quán</td>
-					<td th:text="${sv.quequan}"></td>
+					<td th:text="': ' + ${sv.quequan}"></td>
 				</tr>
 			</table>
 	</div>
