@@ -19,7 +19,9 @@ public class Vethang{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
     private Date thoigiansd;
+    
     @OneToOne
     @JoinColumn(name = "xeId")
     private Xe xe;

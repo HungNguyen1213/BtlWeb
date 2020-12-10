@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Vethang extends Dichvu{
+public class Vethang{
 		
 	private int id;
 	
@@ -18,5 +18,7 @@ public class Vethang extends Dichvu{
 	
 	private int solanguitoida;
 	
-	private Xe xe;	
+	private Xe xe;
+
+	private Dichvu dichvu;
 }
