@@ -13,32 +13,24 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name="tblkhach")
-public class Khach {
+@Table(name="tblngayden")
+public class Ngayden {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
 	
-	@Column(name ="soCMT")
-	private String soCMT;
+	@Column(name="ngayden")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date ngayden;
 	
-	@Column(name="ten")
-	private String ten;
-	
-	@Column(name="ngaysinh")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private Date ngaysinh;
-		
-	// quan hệ n-1 với sinh viên
 	@ManyToOne
-	@JoinColumn(name="sinhvienid")
-	private Sinhvien sinhvien;
+	@JoinColumn(name="khachid")
+	private Khach khach;	
+	
 }

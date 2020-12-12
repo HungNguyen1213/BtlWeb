@@ -10,9 +10,9 @@
 <body>
 	<div align="center">
 		<h1>Quản lý khách đến chơi</h1>
-		<div>Thêm khách đến chơi:</div>
+		<div>Sửa khách đến chơi:</div>
 		<div class=”col-sm-6″>
-			<form name="addKhach" method="post" th:object="${khach}" th:action="@{/quanlykhach/luu-khach}">
+			<form name="suaKhach" method="post" th:object="${khach}" th:action="@{/quanlykhach/suakhach}">
 				<table border="1px">
 					<tr>
 						<td>Số CMT</td>
@@ -24,14 +24,13 @@
 					</tr>
 					<tr>
 						<td>Ngày sinh</td>
-						<td><input type="date" name="ngaysinh"></td>
+						<td><input type="date" name="ngaysinh" th:Field="*{ngaysinh}"></td>
 					</tr>
 
 				</table>
-
 				<input style="margin-left: 200px;" type="submit" value="Lưu" name="luu">
 			</form>
-			<div class=”col-sm-6″><a href="#"><button style="float: none; margin-left: 200px;">Huỷ</button></a></div>
+			<div class=”col-sm-6″><a href="#"><button style="float: none; margin-left: 200px;">Huỷ</button> </a></div>
 
 		</div>		
 	</div>

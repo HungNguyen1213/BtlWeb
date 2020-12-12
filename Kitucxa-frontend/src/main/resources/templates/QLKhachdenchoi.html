@@ -11,11 +11,11 @@
    <div align="center">
       <h1>Quản lý khách đến chơi</h1>
       <div>Tìm kiếm sinh viên: </div>
-      <Form method="GET" name="search">
+      <Form method="GET" name="search" th:action="@{/quanlykhach/timkiem}">
          <input name="txtSearch" type="text" style="width: 200">
          <input name="subSearch" type="submit" value="Tìm kiếm">
       </Form>
-      <form method="get">
+      <form method="get" th:action="@{/quanlykhach/dskhach}">
          <table border="1px">
             <tr>
                <th>Mã sv</th>
@@ -28,45 +28,14 @@
             <tr th:each="sv : ${sinhviens}">
                <td th:text="${sv.id}"></td>
                <td th:text="${sv.ten}"></td>
-               <td th:Date="${sv.ngaysinh}" th:utext="${sv.ngaysinh}"></td>
+               <td th:text="${sv.ngaysinh}"></td>
                <td th:text="${sv.soCMT}"></td>
                <td th:text="${sv.lop}"></td>
-               <td><a th:href=@"/quanlykhach/dskhach"><input type="radio" name="chon" value="${sv.id}"
-               ></a></td>
+               <td><input type="radio" name="chon" th:value="${sv.id}"></td>
             </tr>
          </table>
-         <input type="submit" value="Lấy danh sách khách của sinh viên" th:href=@"/laydanhsachkhach">
+         <input type="submit" value="Tiếp tục">
       </form>
-
-      <div>Chọn khách đến chơi:</div>
-      <div>Tìm thông tin khách đã đến chơi:</div>
-       <Form method="GET" name="searchClient">
-         <input name="txtSearchClient" type="text" style="width: 200">
-         <input name="subSearchClient" type="submit" value="Tìm kiếm">
-      </Form>
-      <form>
-      <div>
-         <table border="1px">
-            <tr>
-               <th>Số CMT</th>
-               <th>Họ tên</th>
-               <th>Ngày sinh</th>
-               <th>Chọn</th>
-            </tr>
- 			<tr th:each="khach : ${Khachs}">
-               <td th:text="${khach.soCMT}"></td>
-               <td th:text="${khach.ten}"></td>
-               <td th:Date="${khach.ngaysinh}" th:utext="${khach.ngaysinh}"></td>
-              <td><input type="checkbox" name="chon" value="${khach.id}"></td>             
-            </tr>
-         </table>
-         <a href=@"/quanlykhach/them"><Button>Thêm thông tin khách đến chơi</Button></a>
-      </div>
-      <div>nhập ngày đến:</div>
-      <input type="date" name="ngayden">
-      <input type="submit" name="save" value="Lưu">
-      </form>
-      
    </div>
 </body>
 

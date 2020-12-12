@@ -2,6 +2,8 @@ package kituc.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,9 +20,8 @@ public class Khach {
 	
 	private String ten;
 	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date ngaysinh;
-
-	private Date ngayden;
 	
 	private Sinhvien sinhvien;
 }

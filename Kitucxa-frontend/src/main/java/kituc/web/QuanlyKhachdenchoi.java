@@ -1,19 +1,32 @@
 package kituc.web;
 
 import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import kituc.model.Khach;
+import kituc.model.Ngayden;
 import kituc.model.Sinhvien;
 
 @Controller
@@ -21,18 +34,104 @@ import kituc.model.Sinhvien;
 public class QuanlyKhachdenchoi {
 	
 	private RestTemplate rest = new RestTemplate();
+	@Autowired
+	private HttpSession session;
 	
 	@GetMapping
 	public String showQLkhach(Model model) {
-		List<Sinhvien> ListSv = Arrays.asList(rest.getForObject("http://localhost:8080/quanlykhach", Sinhvien[].class) );
+		List<Sinhvien> ListSv = Arrays.asList(rest.getForObject("http://localhost:8080/sinhvien", Sinhvien[].class) );
 		model.addAttribute("sinhviens",ListSv);
 		return "QLKhachdenchoi";
 	}
 	
-	@GetMapping("/dskhach")
-	public String showKhachTheoIdSV(Sinhvien sv, Model model){
-		List<Khach> listKhach = Arrays.asList(rest.getForObject("http://localhost:8080/quanlykhach/laydskhach/{id}", Khach.class, sv.getId()));
-		model.addAttribute("Khachs", listKhach);
-		return "redirect:/";
+	@GetMapping("/timkiem")
+	private String timSinhvien(Model model, @RequestParam("txtSearch") String keyword) {
+		List<Sinhvien> listSv = Arrays.asList(rest.getForObject("http://localhost:8080/sinhvien/tim/{keyword}", Sinhvien[].class, keyword));
+		model.addAttribute("sinhviens", listSv);
+		return "QLKhachdenchoi";
 	}
+	
+	@GetMapping("/dskhach")
+	public String showKhachTheoIdSV(@RequestParam("chon") int id, Model model ) throws ParseException{
+		List<Khach> listKhach = Arrays.asList(rest.getForObject("http://localhost:8080/quanlykhach/laydanhsachkhach/{id}", Khach[].class, id));
+		session.setAttribute("id", id);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		for(int i=0; i< listKhach.size(); i++) {
+			String ngaysinh = sdf.format(listKhach.get(i).getNgaysinh());
+			listKhach.get(i).setNgaysinh(sdf.parse(ngaysinh));
+		}
+		model.addAttribute("khachs", listKhach);
+		return "QLDSkhach";
+	}
+	
+	@GetMapping("/them")
+	public String getluuKhach(Model model) {
+		model.addAttribute("khach", new Khach());
+		return "ThemKhachDen";
+	}
+	
+	@GetMapping("/tim-khach")
+	public String timKhach(Model model, @RequestParam("txtSearchClient") String key) {
+		int id = (int) session.getAttribute("id");
+		List<Khach> arrKhach = Arrays.asList(rest.getForObject("http://localhost:8080/quanlykhach/tim-khach/{name}&{id}", Khach[].class, key, id));
+		model.addAttribute("khachs", arrKhach);
+		return "QLDSkhach";
+	}
+	
+	@PostMapping("/luu-khach")
+	public String luuKhach(@ModelAttribute("khach") Khach khach, @RequestParam("ngaysinh") String ngaysinh) throws ParseException {
+		int id = (int) session.getAttribute("id");
+		Sinhvien sinhvien = new Sinhvien();
+		sinhvien.setId(id);
+		khach.setSinhvien(sinhvien);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		khach.setNgaysinh(sdf.parse(ngaysinh));
+		rest.postForObject("http://localhost:8080/quanlykhach", khach , Khach.class);
+		return "redirect:/quanlykhach/dskhach?chon="+id;
+	}
+	
+	@PostMapping("/luu-ngay-den-choi")
+	public String luuNgay(@RequestParam("ngayden") String ngay, @RequestParam("chon") List<String> ArridKhach) throws ParseException {
+		Khach khach = new Khach();		
+		Ngayden ngayden = new Ngayden();
+		List<Ngayden> arrNgayden = new ArrayList<Ngayden>();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date ngaydenchoi = sdf.parse(ngay);
+		for(int i=0; i<ArridKhach.size(); i++) {
+			khach.setId(Integer.parseInt(ArridKhach.get(i)));
+			ngayden.setKhach(khach);
+			ngayden.setNgayden(ngaydenchoi);
+			arrNgayden.add(ngayden);
+		}		
+		rest.postForObject("http://localhost:8080/quanlykhach/luu-ngay-den", arrNgayden , arrNgayden.getClass());
+		return "redirect:/quanlykhach";
+	}
+	
+	@GetMapping("/sua/{id}")
+	public String getKhachToSua(Model model, @PathVariable("id") int id) {
+		Khach khach = rest.getForObject("http://localhost:8080/quanlykhach/sua/{id}", Khach.class, id);
+		session.setAttribute("idkhach", khach.getId());
+		model.addAttribute("khach", khach);
+		return "SuaKhach";
+	}
+	
+	@PostMapping("/suakhach")
+	public String suaKhach(@ModelAttribute("khach") Khach khach) {
+		int id = (int) session.getAttribute("id");
+		int idkhach = (int) session.getAttribute("idkhach");
+		Sinhvien sinhvien = new Sinhvien();
+		sinhvien.setId(id);
+		khach.setId(idkhach);
+		khach.setSinhvien(sinhvien);
+		rest.put("http://localhost:8080/quanlykhach/suakhach/{id}", khach , idkhach );
+		return "redirect:/quanlykhach/dskhach?chon="+id;
+	}
+	
+	@GetMapping("/xoa/{id}")
+	public String xoaKhach(@PathVariable("id") int id) {
+		int idsv = (int) session.getAttribute("id");
+		rest.delete("http://localhost:8080/quanlykhach/xoa/{id}", id);
+		return "redirect:/quanlykhach/dskhach?chon="+idsv;
+	}
+	
 }
