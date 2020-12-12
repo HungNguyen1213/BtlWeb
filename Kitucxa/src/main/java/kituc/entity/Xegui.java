@@ -32,8 +32,8 @@ public class Xegui {
 	private Date ngaysd;
 
 	@ManyToOne
-	@JoinColumn(name="sinhvienid")
-	private Sinhvien sinhvien;
+	@JoinColumn(name="thanhVienId")
+	private Thanhvien thanhvien;
 	
 	@ManyToOne
 	@JoinColumn(name="xeid")

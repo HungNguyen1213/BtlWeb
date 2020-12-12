@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,13 +35,16 @@ public class DichvuSudung {
 	@Column(name="dongia")
 	private float dongia;
 	
+	@Column(name="thoigiansddv")
+	private int thoigiansddv;
+	
 	@ManyToOne
 	@JoinColumn(name = "dichvuid")
 	private Dichvu dichvu;
 	
 	@ManyToOne
-	@JoinColumn(name = "sinhvienid")
-	private Sinhvien sinhvien;
+	@JoinColumn(name = "thanhVienId")
+	private Thanhvien sinhvien;
 
 	@PrePersist
 	void thoigianbd() {

@@ -1,17 +1,16 @@
 package kituc.model;
 
-import java.util.Date;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Vethang extends Dichvu{
+public class Vethang{
 		
 	private int id;
 	
@@ -19,5 +18,7 @@ public class Vethang extends Dichvu{
 	
 	private int solanguitoida;
 	
-	private Xe xe;	
+	private Xe xe;
+
+	private Dichvu dichvu;
 }

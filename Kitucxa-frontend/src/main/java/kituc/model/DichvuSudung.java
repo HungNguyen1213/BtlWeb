@@ -1,8 +1,5 @@
 package kituc.model;
 
-import java.util.Date;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,14 +11,16 @@ import lombok.NoArgsConstructor;
 public class DichvuSudung {
 	
 	private int id;
-	
-	private Date thoigianbd;
-	
-	private Date thoigiankt;
-	
+
+	private String thoigianbd;
+
+	private String thoigiankt;
+
 	private float dongia;
 	
+	private int thoigiansddv;
+
 	private Dichvu dichvu;
-	
-	private Sinhvien sinhvien;
+
+	private Thanhvien sinhvien;
 }

@@ -41,8 +41,8 @@ public class Phongthue {
 	private Phong phong;
 	
 	@ManyToOne
-	@JoinColumn(name = "sinhvienid")
-	private Sinhvien sinhvien;
+	@JoinColumn(name = "thanhVienId")
+	private Thanhvien sinhvien;
 	
 	@PrePersist
 	void thoigianbd() {

@@ -39,6 +39,6 @@ public class Khach {
 		
 	// quan hệ n-1 với sinh viên
 	@ManyToOne
-	@JoinColumn(name="sinhvienid")
-	private Sinhvien sinhvien;
+	@JoinColumn(name="thanhVienId")
+	private Thanhvien sinhvien;
 }
