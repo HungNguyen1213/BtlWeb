@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name ="tblsinhvien")
-public class Sinhvien{
+public class Thanhvien {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

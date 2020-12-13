@@ -27,7 +27,7 @@ import org.springframework.web.client.RestTemplate;
 
 import kituc.model.Khach;
 import kituc.model.Ngayden;
-import kituc.model.Sinhvien;
+import kituc.model.Thanhvien;
 
 @Controller
 @RequestMapping("/quanlykhach")
@@ -39,14 +39,14 @@ public class QuanlyKhachdenchoi {
 	
 	@GetMapping
 	public String showQLkhach(Model model) {
-		List<Sinhvien> ListSv = Arrays.asList(rest.getForObject("http://localhost:8080/sinhvien", Sinhvien[].class) );
+		List<Thanhvien> ListSv = Arrays.asList(rest.getForObject("http://localhost:8080/sinhvien", Thanhvien[].class) );
 		model.addAttribute("sinhviens",ListSv);
 		return "QLKhachdenchoi";
 	}
 	
 	@GetMapping("/timkiem")
 	private String timSinhvien(Model model, @RequestParam("txtSearch") String keyword) {
-		List<Sinhvien> listSv = Arrays.asList(rest.getForObject("http://localhost:8080/sinhvien/tim/{keyword}", Sinhvien[].class, keyword));
+		List<Thanhvien> listSv = Arrays.asList(rest.getForObject("http://localhost:8080/sinhvien/tim/{keyword}", Thanhvien[].class, keyword));
 		model.addAttribute("sinhviens", listSv);
 		return "QLKhachdenchoi";
 	}
@@ -81,7 +81,7 @@ public class QuanlyKhachdenchoi {
 	@PostMapping("/luu-khach")
 	public String luuKhach(@ModelAttribute("khach") Khach khach, @RequestParam("ngaysinh") String ngaysinh) throws ParseException {
 		int id = (int) session.getAttribute("id");
-		Sinhvien sinhvien = new Sinhvien();
+		Thanhvien sinhvien = new Thanhvien();
 		sinhvien.setId(id);
 		khach.setSinhvien(sinhvien);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -119,7 +119,7 @@ public class QuanlyKhachdenchoi {
 	public String suaKhach(@ModelAttribute("khach") Khach khach) {
 		int id = (int) session.getAttribute("id");
 		int idkhach = (int) session.getAttribute("idkhach");
-		Sinhvien sinhvien = new Sinhvien();
+		Thanhvien sinhvien = new Thanhvien();
 		sinhvien.setId(id);
 		khach.setId(idkhach);
 		khach.setSinhvien(sinhvien);

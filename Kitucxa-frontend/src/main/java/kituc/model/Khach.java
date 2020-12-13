@@ -23,5 +23,5 @@ public class Khach {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date ngaysinh;
 	
-	private Sinhvien sinhvien;
+	private Thanhvien sinhvien;
 }
