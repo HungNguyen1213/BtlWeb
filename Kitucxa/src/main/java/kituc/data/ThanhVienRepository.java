@@ -9,4 +9,6 @@ import java.util.List;
 public interface ThanhVienRepository extends JpaRepository<Thanhvien,Integer> {
     @Query("SELECT tv FROM Thanhvien tv WHERE tv.ten LIKE %?1%")
     public List<Thanhvien> findAllByKey(String keyword);
+    @Query("SELECT tv FROM Thanhvien tv WHERE tv.userName=?1 AND tv.password=?2")
+    public Thanhvien checkLogin(String userName,String password);
 }

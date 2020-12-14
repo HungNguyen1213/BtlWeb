@@ -19,6 +19,9 @@ public class ThanhVienService {
 	public Iterable<Thanhvien> timSinhvien(String keyword){
 		return svRepo.findAllByKey(keyword);
 	}
+	public Thanhvien checkLogin(String userName,String password){
+		return svRepo.checkLogin(userName,password);
+	}
 	
 	public Thanhvien sinhvienById(int id) {
 		Optional<Thanhvien> optSv = svRepo.findById(id);

@@ -23,21 +23,19 @@
 		<br>
 		<table border="1" cellpadding="5">
 			<tr class="text-center">
-<!--				<th>ID</th>-->
-				<th>tháng</th>
-				<th>số lần gửi tối đa</th>
-				<th>dịch vụ id</th>
+				<th>ID</th>
+				<th>thang sử dụng</th>
+				<th>biển số xe</th>
 				<th>xe id</th>
 				<th>Sửa/Xóa</th>
 			</tr>
 			<tr th:each="veThang : ${listVeThang}" class="text-center">
-<!--				<td th:utext="${veThang.id}"></td>-->
-				<td th:utext="${veThang.thang}"></td>
-				<td th:utext="${veThang.soLanGuiToiDa}"></td>
-				<td th:utext="${veThang.dichVuId}"></td>
+				<td th:utext="${veThang.id}"></td>
+				<td th:utext="${#dates.format(veThang.thoigiansd,'dd-MM-yyyy')}"></td>
+				<td th:utext="${veThang.bienSo}"></td>
 				<td th:utext="${veThang.xeId}"></td>
-				<td><a th:href="@{'/quan-ly-ve-thang/sua/' + ${veThang.xeId}}" class="btn btn-success">Sửa</a>&nbsp;&nbsp;&nbsp;&nbsp;
-					<a th:href="@{'/quan-ly-ve-thang/xoa/' + ${veThang.xeId}}" class="btn btn-danger">Xóa</a></td>
+				<td><a th:href="@{'/quan-ly-ve-thang/sua/' + ${veThang.id}}" class="btn btn-success">Sửa</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a th:href="@{'/quan-ly-ve-thang/xoa/' + ${veThang.id}}" class="btn btn-danger">Xóa</a></td>
 			</tr>
 		</table>
 	</div>

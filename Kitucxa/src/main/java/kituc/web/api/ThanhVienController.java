@@ -21,7 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ThanhVienController {
 	@Autowired
 	private ThanhVienService thanhVienService;
-	
+	@PostMapping("/login")
+	public Thanhvien checkLogin(@RequestBody Thanhvien thanhvien){
+		return thanhVienService.checkLogin(thanhvien.getUserName(),thanhvien.getPassword());
+	}
 
 	@GetMapping
 	public Iterable<Thanhvien> getAllSinhvien() {
