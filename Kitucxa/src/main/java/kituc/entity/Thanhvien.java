@@ -40,6 +40,12 @@ public class Thanhvien {
 	
 	@Column(name="vitri")
 	private String vitri;
+
+	@Column(name = "username")
+	private String userName;
+
+	@Column(name = "password")
+	private String password;
 	
 	@Column(name="lop")
 	private String lop;

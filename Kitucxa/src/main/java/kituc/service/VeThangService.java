@@ -1,12 +1,12 @@
 package kituc.service;
 
-import kituc.data.DichvuRepository;
 import kituc.data.VethangRepository;
 import kituc.data.XeRepository;
 import kituc.entity.Dichvu;
 import kituc.entity.Vethang;
 import kituc.entity.Xe;
-import kituc.payload.VeThangRequest;
+import kituc.payload.NewVeThangRequest;
+import kituc.payload.VeThangRespone;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,21 +22,18 @@ public class VeThangService {
     private VethangRepository vethangRepository;
     @Autowired
     private XeRepository xeRepository;
-    @Autowired
-    private DichvuRepository dichvuRepository;
-    // convert vethang to vethangRequest
-    public List<VeThangRequest> findAll(){
+    public List<VeThangRespone> findAll(){
         return vethangRepository.findAll().stream().map(this::convert).collect(Collectors.toList());
     }
-//    public VeThangRequest findById(Integer id){
-//        Optional<Vethang> byId = vethangRepository.findById(id);
-//        if(!byId.isPresent()){
-//            //throw exception
-//            return null;
-//        }
-//        return this.convert(byId.get());
-//    }
-    public List<VeThangRequest> findByBienSo(String bienSo){
+    public VeThangRespone findById(Integer id){
+        Optional<Vethang> byId = vethangRepository.findById(id);
+        if(!byId.isPresent()){
+            //throw exception
+            return null;
+        }
+        return this.convert(byId.get());
+    }
+    public List<VeThangRespone> findByBienSo(String bienSo){
 //        if(bienSo.isEmpty()){
 //            bienSo="";
 //        }
@@ -54,59 +51,48 @@ public class VeThangService {
         }
         return vethangs.stream().map(this::convert).collect(Collectors.toList());
     }
-    public VeThangRequest addNew(VeThangRequest veThangRequest){
-        Vethang allByXeId = vethangRepository.findAllByXeId(veThangRequest.getXeId());
+    public VeThangRespone addNew(NewVeThangRequest newVeThangRequest){
+        Xe xe= xeRepository.findByBienSo(newVeThangRequest.getBienSo());
 
-        if(allByXeId!=null){
+        if(xe==null){
             //throw ex
             return null;
         }
         // tạo 1 vethang mới để hứng lấy các thuộc tính
         Vethang vethang=new Vethang();
-        BeanUtils.copyProperties(veThangRequest,vethang);
+        vethang.setThoigiansd(newVeThangRequest.getThoigiansd());
+        vethang.setXe(xe);
+        vethangRepository.save(vethang);
+        return this.convert(vethang);
+    }
+    public VeThangRespone update(NewVeThangRequest newVeThangRequest,int id){
+        Xe xe= xeRepository.findByBienSo(newVeThangRequest.getBienSo());
 
-        Optional<Xe> byId1 = xeRepository.findById(veThangRequest.getXeId());
-        Optional<Dichvu> byId2 = dichvuRepository.findById(veThangRequest.getDichVuId());
-        if(!byId1.isPresent()||!byId2.isPresent()){
-            // throw ex
+        if(xe==null){
+            //throw ex
             return null;
         }
-        vethang.setXe(byId1.get());
+        // tạo 1 vethang mới để hứng lấy các thuộc tính
+        Vethang vethang=new Vethang();
+        vethang.setId(id);
+        vethang.setThoigiansd(newVeThangRequest.getThoigiansd());
+        vethang.setXe(xe);
         vethangRepository.save(vethang);
-        return veThangRequest;
-    }
-    public VeThangRequest update(VeThangRequest veThangRequest){
-        Vethang allByXeId = vethangRepository.findAllByXeId(veThangRequest.getXeId());
-
-        if(allByXeId!=null){
-            // tạo 1 vethang mới để hứng lấy các thuộc tính
-            Vethang vethang=new Vethang();
-            BeanUtils.copyProperties(veThangRequest,vethang);
-
-            Optional<Xe> byId1 = xeRepository.findById(veThangRequest.getXeId());
-            Optional<Dichvu> byId2 = dichvuRepository.findById(veThangRequest.getDichVuId());
-            if(!byId1.isPresent()||!byId2.isPresent()){
-                // throw ex
-                return null;
-            }
-            vethang.setId(allByXeId.getId());
-            vethang.setXe(byId1.get());
-            vethangRepository.save(vethang);
-            return veThangRequest;
-        }
-        //throw ex
-        return null;
+        return this.convert(vethang);
     }
     public void delete(Integer id){
-        Optional<Xe> byId = xeRepository.findById(id);
+        Optional<Vethang> byId = vethangRepository.findById(id);
         if(byId.isPresent()){
-            vethangRepository.deleteById(vethangRepository.findAllByXeId(byId.get().getId()).getId());
+            vethangRepository.deleteById(id);
         }
     }
-    public VeThangRequest convert(Vethang vethang){
-        VeThangRequest veThangRequest=new VeThangRequest();
-        BeanUtils.copyProperties(vethang,veThangRequest);
-        veThangRequest.setXeId(vethang.getXe().getId());
-        return veThangRequest;
+    public VeThangRespone convert(Vethang vethang){
+        VeThangRespone veThangRespone =new VeThangRespone();
+        veThangRespone.setThoigiansd(vethang.getThoigiansd());
+        veThangRespone.setId(vethang.getId());
+        Xe xe=xeRepository.findById(vethang.getXe().getId()).get();
+        veThangRespone.setXeId(xe.getId());
+        veThangRespone.setBienSo(xe.getBienSo());
+        return veThangRespone;
     }
 }

@@ -11,51 +11,44 @@
 		<h2><a th:href="@{/quan-ly-ve-thang}" class="btn btn-warning">Danh sách vé tháng</a></h2>
 		<hr>
 	</div>
-	<div align="center" th:unless="${veThang.xeId}">
+	<div align="center" th:unless="${veThang.id}">
 		<h2>Thêm vé tháng</h2>
 		<br>
 		<form method="post" th:object="${veThang}">
 			<table>
 				<tr class="text-left">
-					<td>tháng</td>
-					<td><input type="text" th:field="*{thang}" /></td>
+					<td>tháng sử dụng</td>
+					<td><input type="date" th:field="*{thoigiansd}" /></td>
 				</tr>
 				<tr class="text-left">
-					<td>số lần gửi tối đa</td>
-					<td><input type="text" th:field="*{soLanGuiToiDa}" /></td>
-				</tr>
-				<tr class="text-left">
-					<td>dịch vụ id</td>
-					<td><input type="text" th:field="*{dichVuId}" /></td>
-				</tr>
-				<tr class="text-left">
-					<td>xe id</td>
-					<td><input type="text" th:field="*{xeId}" /></td>
+					<td>biển số xe</td>
+					<td><input type="text" th:field="*{bienSo}" /></td>
 				</tr>
 			</table>
 			<br>
 			<input type="submit" value="Thêm" class="btn btn-success" />
 		</form>
 	</div>
-	<div align="center" th:if="${veThang.xeId}">
+	<div align="center" th:if="${veThang.id}">
 		<h2>Sửa Vé Tháng</h2>
-		<form method="PUT" th:object="${veThang}">
+		<form method="POST" th:object="${veThang}">
 			<table>
 				<tr class="text-left">
-					<td>tháng </td>
-					<td><input type="text" th:field="*{thang}" /></td>
+					<td>id</td>
+					<td th:text="${veThang.id}"></td>
 				</tr>
 				<tr class="text-left">
-					<td>số lần gửi tối đa</td>
-					<td><input type="text" th:field="*{soLanGuiToiDa}" /></td>
-				</tr>
-				<tr class="text-left">
-					<td>dịch vụ id</td>
-					<td><input type="text" th:field="*{dichVuId}" /></td>
+					<td>tháng sử dụng </td>
+					<td><input type="date" th:field="*{thoigiansd}" /></td>
 				</tr>
 				<tr class="text-left">
 					<td>xe id</td>
-					<td><input type="text" th:field="*{xeId}" /></td>
+					<td th:text="${veThang.xeId}"></td>
+<!--					<td><input type="tex" th:field="*{xeId}" /></td>-->
+				</tr>
+				<tr class="text-left">
+					<td>biển số xe</td>
+					<td><input type="text" th:field="*{bienSo}" /></td>
 				</tr>
 			</table>
 			<br>

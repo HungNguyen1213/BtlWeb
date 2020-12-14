@@ -20,6 +20,10 @@ public class Thanhvien {
 	private String ngaysinh;
 	
 	private String vitri;
+
+	private String userName;
+
+	private String password;
 	
 	private String lop;
 }

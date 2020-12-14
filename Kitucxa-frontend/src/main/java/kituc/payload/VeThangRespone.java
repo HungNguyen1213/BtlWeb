@@ -1,4 +1,4 @@
-package kituc.model;
+package kituc.payload;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,12 +10,10 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class Vethang{
-		
-	private int id;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date thoigiansd;
-	
-	private Xe xe;
+public class VeThangRespone {
+    private int id;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date thoigiansd;
+    private int xeId;
+    private String bienSo;
 }
