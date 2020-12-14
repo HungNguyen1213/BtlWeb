@@ -20,7 +20,7 @@ public class HomeController {
     public String trangchu(@ModelAttribute Thanhvien thanhvien){
         Thanhvien thanhvien1 = rest.postForObject("http://localhost:8080/thanhvien/login", thanhvien, Thanhvien.class);
         if(thanhvien1==null) return "redirect:/";
-        else if(thanhvien1.getVitri()=="admin")return "trangchuadmin";
-        return "trangtrusinhvien";
+        else if(thanhvien1.getVitri().equals("admin"))return "trangchuadmin";
+        return "trangchusinhvien";
     }
 }
