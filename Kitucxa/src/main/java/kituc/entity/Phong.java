@@ -37,6 +37,4 @@ public class Phong {
 	@Column(name="songuoitoida")
 	private int songuoitoida;
 	
-//	@OneToMany(mappedBy = "phong")
-//	private List<Phongthue> phongThue = new ArrayList<>();
 }

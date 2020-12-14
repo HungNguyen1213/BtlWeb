@@ -10,10 +10,10 @@ import kituc.entity.Khach;
 
 public interface KhachReponsitory extends JpaRepository<Khach, Integer>{
 	
-	@Query("SELECT k FROM Khach k WHERE sinhvienid = ?1")
+	@Query("SELECT k FROM Khach k WHERE thanhvienid = ?1")
 	public List<Khach> getAllClientBySvId(int svId);
 	
-	@Query("SELECT k FROM Khach k WHERE k.ten LIKE %?1% AND sinhvienid=?2 ")
+	@Query("SELECT k FROM Khach k WHERE k.ten LIKE %?1% AND thanhvienid= ?2")
 	public List<Khach> findKhachByName(String name, int sinhvienid);
 }
 

@@ -22,4 +22,5 @@ public class Phongthue {
 	
 	private Phong phong;
 	
+	private Thanhvien sinhvien;
 }

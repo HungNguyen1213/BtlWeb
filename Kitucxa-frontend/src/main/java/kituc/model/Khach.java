@@ -20,7 +20,7 @@ public class Khach {
 	
 	private String ten;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaysinh;
 	
 	private Thanhvien sinhvien;

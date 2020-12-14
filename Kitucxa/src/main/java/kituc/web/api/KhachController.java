@@ -30,7 +30,7 @@ public class KhachController {
 	private KhachService khachSer;
 	
 	@GetMapping("/laydanhsachkhach/{id}")
-	public Iterable<Khach> getKhachBySvID(@PathVariable("id") int id) throws ParseException{
+	public Iterable<Khach> getKhachBySvID(@PathVariable("id") int id){
 		return khachSer.getClientByIdSv(id);
 	}
 	

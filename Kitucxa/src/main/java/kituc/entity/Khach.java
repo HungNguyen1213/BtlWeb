@@ -34,11 +34,11 @@ public class Khach {
 	private String ten;
 	
 	@Column(name="ngaysinh")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-đ")
 	private Date ngaysinh;
 		
 	// quan hệ n-1 với sinh viên
 	@ManyToOne
-	@JoinColumn(name="thanhVienId")
+	@JoinColumn(name="thanhvienid")
 	private Thanhvien sinhvien;
 }

@@ -11,7 +11,7 @@ import lombok.Data;
 public class Ngayden {
 	
 	private int id;
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngayden;
 	
 	private Khach khach;	

@@ -41,11 +41,7 @@ public class Phongthue {
 	private Phong phong;
 	
 	@ManyToOne
-	@JoinColumn(name = "thanhVienId")
+	@JoinColumn(name = "thanhvienid")
 	private Thanhvien sinhvien;
-	
-	@PrePersist
-	void thoigianbd() {
-		this.thoigianbd = new Date();
-	}
+
 }

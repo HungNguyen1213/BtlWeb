@@ -31,7 +31,7 @@ import kituc.model.Thanhvien;
 
 @Controller
 @RequestMapping("/quanlykhach")
-public class QuanlyKhachdenchoi {
+public class QuanlyKhachController {
 	
 	private RestTemplate rest = new RestTemplate();
 	@Autowired
@@ -39,14 +39,14 @@ public class QuanlyKhachdenchoi {
 	
 	@GetMapping
 	public String showQLkhach(Model model) {
-		List<Thanhvien> ListSv = Arrays.asList(rest.getForObject("http://localhost:8080/sinhvien", Thanhvien[].class) );
+		List<Thanhvien> ListSv = Arrays.asList(rest.getForObject("http://localhost:8080/thanhvien", Thanhvien[].class) );
 		model.addAttribute("sinhviens",ListSv);
 		return "QLKhachdenchoi";
 	}
 	
 	@GetMapping("/timkiem")
 	private String timSinhvien(Model model, @RequestParam("txtSearch") String keyword) {
-		List<Thanhvien> listSv = Arrays.asList(rest.getForObject("http://localhost:8080/sinhvien/tim/{keyword}", Thanhvien[].class, keyword));
+		List<Thanhvien> listSv = Arrays.asList(rest.getForObject("http://localhost:8080/thanhvien/tim/{keyword}", Thanhvien[].class, keyword));
 		model.addAttribute("sinhviens", listSv);
 		return "QLKhachdenchoi";
 	}
@@ -55,11 +55,6 @@ public class QuanlyKhachdenchoi {
 	public String showKhachTheoIdSV(@RequestParam("chon") int id, Model model ) throws ParseException{
 		List<Khach> listKhach = Arrays.asList(rest.getForObject("http://localhost:8080/quanlykhach/laydanhsachkhach/{id}", Khach[].class, id));
 		session.setAttribute("id", id);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		for(int i=0; i< listKhach.size(); i++) {
-			String ngaysinh = sdf.format(listKhach.get(i).getNgaysinh());
-			listKhach.get(i).setNgaysinh(sdf.parse(ngaysinh));
-		}
 		model.addAttribute("khachs", listKhach);
 		return "QLDSkhach";
 	}
@@ -134,4 +129,9 @@ public class QuanlyKhachdenchoi {
 		return "redirect:/quanlykhach/dskhach?chon="+idsv;
 	}
 	
+	@GetMapping("/quaylai")
+	public String quayLai() {
+		int id = (int) session.getAttribute("id");
+		return "redirect:/quanlykhach/dskhach?chon="+id;
+	}
 }
