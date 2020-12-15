@@ -15,12 +15,8 @@ public class Xe {
 
 	private int id;
 
-	private String bienso;
+	private String bienSo;
 
 	private String loaixe;
-
-	private Vethang vethang; 
-	
-	private List<Xegui> xegui = new ArrayList<>();
 	
 }

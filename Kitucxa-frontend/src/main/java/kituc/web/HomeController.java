@@ -30,6 +30,7 @@ public class HomeController {
     @PostMapping
     public String trangchu(Model model, @ModelAttribute Thanhvien thanhvien, HttpSession session){
         Thanhvien thanhvien1 = rest.postForObject("http://localhost:8080/thanhvien/login", thanhvien, Thanhvien.class);
+        if(thanhvien1==null) return"redirect:/";
         if(thanhvien1.getVitri().equals("admin")) {
         	session.setAttribute("thanhvien", thanhvien1);
         	return "trangchuadmin";
