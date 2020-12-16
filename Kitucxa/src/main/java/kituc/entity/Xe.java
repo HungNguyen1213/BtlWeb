@@ -33,10 +33,4 @@ public class Xe implements Serializable {
 	@Column(name="loaixe")
 	private String loaixe;
 	
-//	@OneToOne(mappedBy = "xe")
-//	private Dichvu dichvu;
-	
-//	@OneToMany(mappedBy = "xegui")
-//	private List<Xegui> xegui = new ArrayList<>();
-	
 }

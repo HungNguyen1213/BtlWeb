@@ -58,9 +58,7 @@ public class QuanlyVeThangController {
 	@GetMapping("/tim")
 	private String timVeThang (Model model, @RequestParam("keyword") String keyword) {
 		if(keyword == null|| keyword.isEmpty()|| keyword.length()==0) {
-			List<VeThangRespone> listVeThang = Arrays.asList(rest.getForObject("http://localhost:8080/vethang", VeThangRespone[].class));
-			model.addAttribute("listVeThang", listVeThang);
-			return "quanlyVeThang";
+			return "redirect:/quan-ly-ve-thang";
 		}
 		List<VeThangRespone> listVeThang = Arrays.asList(rest.getForObject("http://localhost:8080/vethang/search/{keyword}", VeThangRespone[].class, keyword));
 		model.addAttribute("listVeThang", listVeThang);
