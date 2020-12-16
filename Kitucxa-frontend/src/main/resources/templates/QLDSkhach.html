@@ -9,15 +9,15 @@
 
 <body>
    <div align="center">
-      <div>Chọn khách đến chơi:</div>
+      <h1>Chọn khách đến chơi:</h1>
        <Form method="GET" name="searchClient" th:action="@{/quanlykhach/tim-khach}">
          <input name="txtSearchClient" type="text" style="width: 200">
-         <input name="subSearchClient" type="submit" value="Tìm kiếm">
+         <input name="subSearchClient" type="submit" class="btn btn-success" value="Tìm kiếm">
       </Form>
       <a th:href="@{/quanlykhach/them}"><Button>Thêm</Button></a>
       <form th:action="@{/quanlykhach/luu-ngay-den-choi}" method="post">
-      <div>
-         <table border="1px">
+      <div class=”col-sm-6″>
+         <table border="1px" cellpadding="5">
             <tr>
                <th>Số CMT</th>
                <th>Họ tên</th>

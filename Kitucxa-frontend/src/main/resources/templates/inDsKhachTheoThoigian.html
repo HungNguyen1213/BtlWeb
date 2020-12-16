@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div align="center">
-		<div>Xem danh sách khách đến chơi</div>
+		<h1>Xem danh sách khách đến chơi</h1>
 		<form method="get" th:action="@{/quanlykhach/dskhach-den-choi-trong-thoigian}">
 			<div>Chọn khoảng thời gian:</div>
 			<div>
@@ -18,7 +18,7 @@
 			<div>
 				đến: <input name="thoigiankt" type="date">
 			</div>
-			<input type="submit" name="sub" value="tìm kiếm">
+			<input type="submit" name="sub" class="btn btn-success" value="tìm kiếm">
 		</form>
 		<table border="1px">
 			<tr>

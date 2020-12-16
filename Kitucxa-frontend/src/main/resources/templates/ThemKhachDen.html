@@ -13,7 +13,7 @@
 		<div>Thêm khách đến chơi:</div>
 		<div class=”col-sm-6″>
 			<form name="addKhach" method="post" th:object="${khach}" th:action="@{/quanlykhach/luu-khach}">
-				<table border="1px">
+				<table border="1px" ellpadding="5">
 					<tr>
 						<td>Số CMT</td>
 						<td><input type="text" th:Field="*{soCMT}"></td>
