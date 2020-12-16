@@ -35,9 +35,6 @@ public class DichvuSudung {
 	@Column(name="dongia")
 	private float dongia;
 	
-	@Column(name="thoigiansddv")
-	private int thoigiansddv;
-	
 	@ManyToOne
 	@JoinColumn(name = "dichvuid")
 	private Dichvu dichvu;

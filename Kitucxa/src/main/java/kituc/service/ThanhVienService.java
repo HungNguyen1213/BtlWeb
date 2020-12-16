@@ -12,8 +12,8 @@ public class ThanhVienService {
 	@Autowired
 	private ThanhVienRepository svRepo;
 	
-	public Iterable<Thanhvien> findAll(){
-		return svRepo.findAll();
+	public Iterable<Thanhvien> findAllSinhvien(){
+		return svRepo.findAllSinhvien();
 	}
 	
 	public Iterable<Thanhvien> timSinhvien(String keyword){

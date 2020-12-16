@@ -12,6 +12,4 @@ public class Dichvu {
 	private String ten;
 
 	private float dongia;
-
-	private int thoigiansddv;
 }

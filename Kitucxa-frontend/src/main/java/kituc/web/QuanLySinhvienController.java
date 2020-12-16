@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
-@RequestMapping("/quan-ly-thanh-vien")
-public class QuanLyThanhVienController {
+@RequestMapping("/quan-ly-sinh-vien")
+public class QuanLySinhvienController {
 	RestTemplate rest = new RestTemplate();
 	
 	@GetMapping
@@ -34,8 +34,9 @@ public class QuanLyThanhVienController {
 	
 	@PostMapping("/them")
 	private String themSinhvien(@ModelAttribute("sv") Thanhvien sv) {
+		sv.setVitri("sinhvien");
 		rest.postForObject("http://localhost:8080/thanhvien", sv, Thanhvien.class);
-		return "redirect:/quan-ly-thanh-vien";
+		return "redirect:/quan-ly-sinh-vien";
 	}
 	
 	@GetMapping("/sua/{id}")
@@ -47,6 +48,7 @@ public class QuanLyThanhVienController {
 	
 	@PostMapping("/sua/{id}")
 	private String suaSinhvien(@ModelAttribute("sv") Thanhvien sv) {
+		sv.setVitri("sinhvien");
 		rest.put("http://localhost:8080/thanhvien/{id}", sv, sv.getId());
 		return "redirect:/quan-ly-sinh-vien";
 	}

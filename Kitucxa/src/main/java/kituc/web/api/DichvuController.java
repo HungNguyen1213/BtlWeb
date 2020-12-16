@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import kituc.dto.DichvuDto;
 import kituc.entity.Dichvu;
 import kituc.service.DichvuService;
 
@@ -27,28 +26,28 @@ public class DichvuController {
 	private DichvuService dvService;
 	
 	@GetMapping
-	public List<DichvuDto> getAllDichvu() {
+	public List<Dichvu> getAllDichvu() {
 		 return dvService.getAllDichvu();
 	}
 	
 	@GetMapping("/{id}")
-	public DichvuDto getDichvuById(@PathVariable("id") int id) {
+	public Dichvu getDichvuById(@PathVariable("id") int id) {
 		return dvService.getDichvuById(id);
 	}
 	
 	@GetMapping("/tim/{keyword}")
-	public List<DichvuDto> searchDichvu(@PathVariable("keyword") String keyword){
+	public List<Dichvu> searchDichvu(@PathVariable("keyword") String keyword){
 		return dvService.searchDichvu(keyword);
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Dichvu themDichvu(@RequestBody DichvuDto dv) {
+	public Dichvu themDichvu(@RequestBody Dichvu dv) {
 		return dvService.luuDichvu(dv);
 	}
 	
 	@PutMapping("/{id}")
-	public Dichvu suaDichvu(@RequestBody DichvuDto dv) {
+	public Dichvu suaDichvu(@RequestBody Dichvu dv) {
 		return dvService.luuDichvu(dv);
 	}
 	

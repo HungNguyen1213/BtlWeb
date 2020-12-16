@@ -27,6 +27,4 @@ public class Dichvu {
 	@Column(name="dongia")
 	private float dongia;
 	
-	@Column(name="thoigiansddv")
-	private int thoigiansddv;
 }

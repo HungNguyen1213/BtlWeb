@@ -3,6 +3,8 @@ package kituc.web;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,9 +32,9 @@ public class DangkyDichvuController {
 	}
 
 	@PostMapping
-	private String dangkiDichvu(@ModelAttribute("dvsd") DichvuSudung dvsd, @RequestParam("dv_id") int id) {
+	private String dangkiDichvu(@ModelAttribute("dvsd") DichvuSudung dvsd, @RequestParam("dv_id") int id, HttpSession session) {
 		Dichvu dv = rest.getForObject("http://localhost:8080/dichvu/{id}", Dichvu.class, id);
-		Thanhvien sv = rest.getForObject("http://localhost:8080/thanhvien/{id}", Thanhvien.class, 1);
+		Thanhvien sv = (Thanhvien)session.getAttribute("thanhvien");
 		dvsd.setSinhvien(sv);
 		dvsd.setDichvu(dv);
 		rest.postForObject("http://localhost:8080/dichvuSudung", dvsd, DichvuSudung.class);

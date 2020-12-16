@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Quản lý Dịch vụ sử dụng</title>
+<meta charset="UTF-8">
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 </head>
 <body>
 	<div align="center">
 		<h1>Quản lý Dịch vụ sử dụng</h1>
-		<h2><a href="#" class="btn btn-warning">Thoát</a></h2>
+		<h2><a th:href="@{/}" class="btn btn-warning">Trang chủ</a></h2>
 		<hr>
 	</div>
 	<div align="center">
@@ -19,6 +20,7 @@
 			<input type="submit" value="Tìm kiếm" class="btn btn-success" />
 		</form>
 		<br>
+		<form method="get" action="xem-dich-vu-su-dung">
 		<table border="1" cellpadding="5">
 			<tr class="text-center">
 				<th>ID</th>
@@ -27,7 +29,7 @@
 				<th>Số CMT</th>
 				<th>Ngày sinh</th>
 				<th>Quê quán</th>
-				<th>Hành động</th>
+				<th>Tích chọn</th>
 			</tr>
 			<tr th:each="sv : ${listSv}">
 				<td th:utext="${sv.id}" class="text-center"></td>
@@ -36,9 +38,19 @@
 				<td th:utext="${sv.soCMT}" class="text-center"></td>
 				<td th:utext="${sv.ngaysinh}" class="text-center"></td>
 				<td th:utext="${sv.quequan}" class="text-center"></td>
-				<td><a th:href="@{'/quan-ly-dich-vu-su-dung/sinhvien/' + ${sv.id}}" class="btn btn-danger">Xem dịch vụ sử dụng</a></td>
+				<td><input type="radio" name="sinhvien" th:value="${sv.id}" /></td>
 			</tr>
 		</table>
+		<br>
+		<label>Thời gian bắt đầu</label>
+		<input type="date" name="sDate" />
+		<br>
+		<label>Thời gian kết thúc</label>
+		<input type="date" name="eDate" />
+		<br>
+		<br>
+		<input type="submit" value="Xem dịch vụ sử dụng" class="btn btn-danger" />
+		</form>
 	</div>
 </body>
 </html>

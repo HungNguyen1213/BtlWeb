@@ -28,7 +28,7 @@ public class ThanhVienController {
 
 	@GetMapping
 	public Iterable<Thanhvien> getAllSinhvien() {
-		return thanhVienService.findAll();
+		return thanhVienService.findAllSinhvien();
 	}
 	
 	@GetMapping("tim/{keyword}")

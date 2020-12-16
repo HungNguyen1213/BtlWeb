@@ -1,5 +1,9 @@
 package kituc.model;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,14 +15,14 @@ import lombok.NoArgsConstructor;
 public class DichvuSudung {
 	
 	private int id;
-
-	private String thoigianbd;
-
-	private String thoigiankt;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date thoigianbd;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date thoigiankt;
 
 	private float dongia;
-	
-	private int thoigiansddv;
 
 	private Dichvu dichvu;
 
