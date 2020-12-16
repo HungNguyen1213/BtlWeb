@@ -49,7 +49,7 @@ public class QuanlyKhachController {
 		List<Thanhvien> listSv = Arrays.asList(rest.getForObject("http://localhost:8080/thanhvien/tim/{keyword}", Thanhvien[].class, keyword));
 		model.addAttribute("sinhviens", listSv);
 		return "QLKhachdenchoi";
-	}
+	} 
 	
 	@GetMapping("/dskhach")
 	public String showKhachTheoIdSV(@RequestParam("chon") int id, Model model ) throws ParseException{
@@ -86,13 +86,14 @@ public class QuanlyKhachController {
 	}
 	
 	@PostMapping("/luu-ngay-den-choi")
-	public String luuNgay(@RequestParam("ngayden") String ngay, @RequestParam("chon") List<String> ArridKhach) throws ParseException {
-		Khach khach = new Khach();		
-		Ngayden ngayden = new Ngayden();
+	public String luuNgay(@RequestParam("ngayden") String ngay, @RequestParam("chon") List<String> ArridKhach) throws ParseException {			
+		
 		List<Ngayden> arrNgayden = new ArrayList<Ngayden>();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date ngaydenchoi = sdf.parse(ngay);
 		for(int i=0; i<ArridKhach.size(); i++) {
+			Khach khach = new Khach();
+			Ngayden ngayden = new Ngayden();
 			khach.setId(Integer.parseInt(ArridKhach.get(i)));
 			ngayden.setKhach(khach);
 			ngayden.setNgayden(ngaydenchoi);
@@ -133,5 +134,19 @@ public class QuanlyKhachController {
 	public String quayLai() {
 		int id = (int) session.getAttribute("id");
 		return "redirect:/quanlykhach/dskhach?chon="+id;
+	}
+	
+	@GetMapping("/dskhachdenchoi")
+	public String showDSkhachdenchoi(Model model) {
+		List<Ngayden> listngay = Arrays.asList(rest.getForObject("http://localhost:8080/quanlykhach/dskhach-ngay-den", Ngayden[].class));
+		model.addAttribute("ngaydens", listngay);
+		return "inDsKhachTheoThoigian";
+	}
+	
+	@GetMapping("/dskhach-den-choi-trong-thoigian")
+	public String getDSfortime(Model model, @RequestParam("thoigianbd") String thoigianbd, @RequestParam("thoigiankt") String thoigiankt){
+		List<Ngayden> listngay = Arrays.asList(rest.getForObject("http://localhost:8080/quanlykhach/dskhach-den-trong-khoang/{ngaybd}&{ngaykt}", Ngayden[].class, thoigianbd, thoigiankt));
+		model.addAttribute("ngaydens", listngay);
+		return "inDSKhachTheoThoigian";
 	}
 }

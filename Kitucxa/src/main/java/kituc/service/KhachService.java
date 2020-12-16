@@ -1,5 +1,6 @@
 package kituc.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,5 +49,13 @@ public class KhachService {
 			return khach.get();
 		}
 		return null;
+	}
+	
+	public List<Ngayden> getNgaydentrongKhoang(Date ngaybd, Date ngaykt){
+		return ngaydenRep.dsNgayden(ngaybd, ngaykt);
+	}
+	
+	public List<Ngayden> getAllNgayden(){
+		return ngaydenRep.findAll();
 	}
 }
