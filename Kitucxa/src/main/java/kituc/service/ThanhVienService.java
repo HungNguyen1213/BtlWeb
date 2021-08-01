@@ -1,8 +1,13 @@
 package kituc.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import kituc.data.ThanhVienRepository;
+import kituc.dto.KhachDto;
+import kituc.dto.ThanhvienDto;
+import kituc.entity.Khach;
 import kituc.entity.Thanhvien;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +16,28 @@ import org.springframework.stereotype.Service;
 public class ThanhVienService {
 	@Autowired
 	private ThanhVienRepository svRepo;
-	
+
+	@Autowired
+	private KhachService khachService;
+
+	public ThanhvienDto convertToDto(Thanhvien thanhvien){
+		ThanhvienDto thanhvienDto = new ThanhvienDto();
+		thanhvienDto.setId(thanhvien.getId());
+		thanhvienDto.setTen(thanhvien.getTen());
+		thanhvienDto.setUserName(thanhvien.getUserName());
+		thanhvienDto.setNgaysinh(thanhvien.getNgaysinh());
+		thanhvienDto.setSoCMT(thanhvien.getSoCMT());
+		thanhvienDto.setQuequan(thanhvien.getQuequan());
+		thanhvienDto.setVitri(thanhvien.getVitri());
+		thanhvienDto.setLop(thanhvien.getLop());
+		List<KhachDto> khachDtoList = new ArrayList<>();
+		for (Khach khach : thanhvien.getKhach()){
+			khachDtoList.add(khachService.convertToDto(khach));
+		}
+		thanhvienDto.setKhachDtoList(khachDtoList);
+		return thanhvienDto;
+	}
+
 	public Iterable<Thanhvien> findAllSinhvien(){
 		return svRepo.findAllSinhvien();
 	}

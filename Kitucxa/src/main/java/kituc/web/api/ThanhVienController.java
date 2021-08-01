@@ -1,5 +1,6 @@
 package kituc.web.api;
 
+import kituc.dto.ThanhvienDto;
 import kituc.entity.Thanhvien;
 import kituc.service.ThanhVienService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/thanhvien", produces = "application/json")
@@ -30,7 +34,22 @@ public class ThanhVienController {
 	public Iterable<Thanhvien> getAllSinhvien() {
 		return thanhVienService.findAllSinhvien();
 	}
-	
+
+	@GetMapping("tim-sinh-vien/{keyword}")
+	public List<ThanhvienDto> findSinhvienByName(@PathVariable("keyword") String keyword){
+		List<ThanhvienDto> thanhvienDtoList = new ArrayList<>();
+		List<Thanhvien> thanhvienList = (List<Thanhvien>) thanhVienService.timSinhvien(keyword);
+		for (Thanhvien thanhvien : thanhvienList){
+			thanhvienDtoList.add(thanhVienService.convertToDto(thanhvien));
+		}
+		return thanhvienDtoList;
+	}
+
+	@GetMapping("/tim-theo-id/{id}")
+	public ThanhvienDto findSinhvienById(@PathVariable("id") int id) {
+		return thanhVienService.convertToDto(thanhVienService.sinhvienById(id));
+	}
+
 	@GetMapping("tim/{keyword}")
 	public Iterable<Thanhvien> timSinhvien(@PathVariable("keyword") String keyword){
 		return thanhVienService.timSinhvien(keyword);

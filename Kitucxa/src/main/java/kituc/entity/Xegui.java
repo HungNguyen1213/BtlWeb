@@ -25,17 +25,17 @@ public class Xegui {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@Column(name="dongia")
+	@Column(name="don_gia")
 	private float dongia;
 	
-	@Column(name="ngaysd")
+	@Column(name="ngay_sd")
 	private Date ngaysd;
 
 	@ManyToOne
-	@JoinColumn(name="thanhVienId")
+	@JoinColumn(name="thanh_vien_id")
 	private Thanhvien thanhvien;
 	
 	@ManyToOne
-	@JoinColumn(name="xeid")
+	@JoinColumn(name="xe_id")
 	private Xe xegui;
 }

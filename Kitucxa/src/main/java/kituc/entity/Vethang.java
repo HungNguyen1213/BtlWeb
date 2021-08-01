@@ -23,6 +23,6 @@ public class Vethang{
     private Date thoigiansd;
     
     @OneToOne
-    @JoinColumn(name = "xeId")
+    @JoinColumn(name = "xe_id")
     private Xe xe;
 }

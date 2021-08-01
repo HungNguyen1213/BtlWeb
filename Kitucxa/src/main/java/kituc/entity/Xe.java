@@ -27,10 +27,10 @@ public class Xe implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="bienso")
+	@Column(name="bien_so")
 	private String bienSo;
 	
-	@Column(name="loaixe")
+	@Column(name="loai_xe")
 	private String loaixe;
 	
 }

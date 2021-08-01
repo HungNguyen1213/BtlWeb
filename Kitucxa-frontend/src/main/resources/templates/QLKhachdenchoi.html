@@ -11,7 +11,7 @@
    <div align="center">
       <h1>Quản lý khách đến chơi</h1>
       <h2><a th:href="@{/}" class="btn btn-warning">Trang chủ</a></h2>
-      <div><i><u> <a href="/quanlykhach/dskhachdenchoi">xem thống kê khách đến chơi</a> </u></i></div>
+      <div><i><u> <a th:href="@{/quanlykhach/dskhachdenchoi}">xem thống kê khách đến chơi</a> </u></i></div>
       <div>Tìm kiếm sinh viên: </div>
       <Form method="GET" name="search" th:action="@{/quanlykhach/timkiem}">
          <input name="txtSearch" type="text" style="width: 200">

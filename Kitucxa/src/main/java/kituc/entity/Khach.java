@@ -27,18 +27,20 @@ public class Khach {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name ="soCMT")
+	@Column(name ="so_CMT")
 	private String soCMT;
 	
 	@Column(name="ten")
 	private String ten;
-	
-	@Column(name="ngaysinh")
-	@DateTimeFormat(pattern = "yyyy-MM-đ")
+
+	@Column(name = "ngay_den")
+	private Date ngayden;
+
+	@Column(name="ngay_sinh")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaysinh;
-		
-	// quan hệ n-1 với sinh viên
+
 	@ManyToOne
-	@JoinColumn(name="thanhvienid")
-	private Thanhvien sinhvien;
+	@JoinColumn(name="thanh_vien_id")
+	private Thanhvien thanhvien;
 }

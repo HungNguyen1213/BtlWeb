@@ -26,22 +26,22 @@ public class DichvuSudung {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name ="thoigianbd")
+	@Column(name ="thoi_gian_bd")
 	private Date thoigianbd;
 	
-	@Column(name ="thoigiankt")
+	@Column(name ="thoi_gian_kt")
 	private Date thoigiankt;
 	
-	@Column(name="dongia")
+	@Column(name="don_gia")
 	private float dongia;
 	
 	@ManyToOne
-	@JoinColumn(name = "dichvuid")
+	@JoinColumn(name = "dich_vu_id")
 	private Dichvu dichvu;
 	
 	@ManyToOne
-	@JoinColumn(name = "thanhVienId")
-	private Thanhvien sinhvien;
+	@JoinColumn(name = "thanh_vien_id")
+	private Thanhvien thanhvien;
 
 	@PrePersist
 	void thoigianbd() {

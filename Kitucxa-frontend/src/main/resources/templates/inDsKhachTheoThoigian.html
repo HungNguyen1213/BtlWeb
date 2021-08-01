@@ -30,22 +30,21 @@
 				<th>Ngày Sinh Khách</th>
 				<th>Ngày đến</th>
 			</tr>
-			<div th:each="ngayden : ${ngaydens}">
-				<div th:each="khach: ${ngayden.Khach}">
-					<div th:each="sinhvien : ${ngayden.khach.sinhvien}">
+			<div th:each="sinhvien : ${listKhach}">
+				<div th:each="khach: ${sinhvien.khachDtoList}">
 			<tr>
 				<td th:text="${sinhvien.id}"></td>
 				<td th:text="${sinhvien.ten}"></td>
 				<td th:text="${sinhvien.ngaysinh}"></td>
 				<td th:text="${khach.soCMT}"></td>
 				<td th:text="${khach.ten}"></td>
-				<td th:text="${#dates.format(khach.ngaysinh, 'dd-MM-yyyy')}"></td>
-				<td th:text="${#dates.format(ngayden.ngayden, 'dd-MM-yyyy')}"></td>
+				<td th:text="${khach.ngaysinh}"></td>
+				<td th:text="${khach.ngayden}"></td>
 			</tr>
-					</div>
 				</div>
 			</div>
 		</table>
+		<a th:href="@{'/quanlykhach'}">Huỷ</a>
 	</div>
 
 </body>

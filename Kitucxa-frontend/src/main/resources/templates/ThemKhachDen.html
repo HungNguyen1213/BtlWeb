@@ -24,9 +24,13 @@
 					</tr>
 					<tr>
 						<td>Ngày sinh</td>
-						<td><input type="date" name="ngaysinh"></td>
+						<td><input type="date" name="ngaysinh" th:Field="*{ngaysinh}"></td>
 					</tr>
 
+					<tr>
+						<td>Ngày đến</td>
+						<td><input type="date" name="ngayden" th:Field="*{ngayden}"></td>
+					</tr>
 				</table>
 
 				<input style="margin-left: 200px;" type="submit" value="Lưu" name="luu">

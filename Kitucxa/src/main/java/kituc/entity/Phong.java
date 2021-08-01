@@ -25,16 +25,16 @@ public class Phong {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="sophong", unique = true)
+	@Column(name="so_phong", unique = true)
 	private String sophong;
 	
-	@Column(name="loaiphong")
+	@Column(name="loai_phong")
 	private String loaiphong;
 	
-	@Column(name="dongia")
+	@Column(name="don_gia")
 	private float dongia;
 	
-	@Column(name="songuoitoida")
+	@Column(name="so_nguoi_toi_da")
 	private int songuoitoida;
 	
 }
